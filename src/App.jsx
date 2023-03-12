@@ -1,9 +1,10 @@
-function App() {
+import { BrowserRouter } from 'react-router-dom';
+import AppRoutes from './routes/AppRoutes';
+
+export default function App() {
   return (
-    <div>
-      <h1 className='text-3xl font-bold underline'>Hello smuckers!</h1>
-    </div>
+    <BrowserRouter>
+      <AppRoutes />
+    </BrowserRouter>
   );
 }
-
-export default App;
