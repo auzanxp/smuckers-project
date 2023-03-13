@@ -1,0 +1,146 @@
+/* HTML5 display-role reset for older browsers */
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    display: block;
+}
+
+body {
+    line-height: 1;
+}
+
+ol,
+ul {
+    list-style: none;
+}
+
+blockquote,
+q {
+    quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+    content: '';
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+
+/* mulai css */
+
+* {
+    background-color: #212327;
+}
+
+
+/* 
+header {
+    border-bottom: 1px solid white;
+} */
+
+nav {
+    margin-left: 80px;
+    margin-right: 80px;
+    height: 100px;
+    margin-top: auto;
+    margin-bottom: auto;
+    display: flex;
+}
+
+nav ul li {
+    float: left;
+}
+
+.kiri {
+    display: block;
+}
+
+.kiri h1 {
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 38px;
+    line-height: 57px;
+    color: #4783FE;
+}
+
+.kanan {
+    margin-top: 15px;
+    margin-left: 40px;
+    width: 800px;
+    height: 80px;
+    border: 1px solid #FFFFFF;
+    filter: drop-shadow(0px 4px 4px rgba(247, 247, 247, 0.25));
+    border-radius: 42px;
+}
+
+.profile {
+    display: flex;
+}
+
+span img {
+    margin-left: -20px;
+    margin-top: -10px;
+}
+
+.profile p {
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    /* identical to box height */
+    color: #FFFFFF;
+    margin-top: 10px;
+}
+
+.kanan a {
+    margin-left: 300px;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 46px;
+    /* identical to box height */
+    color: #FCFCFC;
+    margin-top: 60px;
+}
+
+.kanan li button {
+    Width: 136px;
+    Height: 55px;
+    background: #212327;
+    border: 1px solid #FBFCFB;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 16px;
+    margin-left: 55px;
+    margin-top: -5px;
+}
+
+.kanan li button a {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 36px;
+    /* identical to box height */
+    color: #FCFCFC;
+    margin-left: 0;
+    margin-top: -5px;
+}
