@@ -1,0 +1,112 @@
+/* HTML5 display-role reset for older browsers */
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    display: block;
+}
+
+body {
+    line-height: 1;
+}
+
+ol,
+ul {
+    list-style: none;
+}
+
+blockquote,
+q {
+    quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+    content: '';
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+
+/* mulai css */
+
+* {
+    background-color: #212327;
+}
+
+header {
+    border-bottom: 1px solid white;
+}
+
+nav {
+    margin-left: 80px;
+    margin-right: 80px;
+    height: 100px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+nav li {
+    float: left;
+    margin-top: 20px;
+}
+
+nav ul li p {
+    font-family: 'Poppins';
+    font-style: normal;
+    color: #4783FE;
+    font-size: 38px;
+    font-weight: 800;
+    margin-left: -38px;
+    margin-top: 4px;
+}
+
+input {
+    height: 55px;
+    width: 630px;
+    border: 1px solid white;
+    border-radius: 20px;
+    margin-left: 60px;
+}
+
+form img {
+    position: absolute;
+    margin-left: -55px;
+    margin-top: 8px;
+}
+
+button {
+    Width: 136px;
+    Height: 55px;
+    box-sizing: border-box;
+    border: 1px solid #FBFCFB;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 16px;
+    margin-left: 55px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+button a {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    color: #FCFCFC;
+    margin-top: 8px;
+    text-decoration: none;
+}
