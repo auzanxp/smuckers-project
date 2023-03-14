@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import Navbar from '../components/Navbar';
 import Category from '../components/elements/Category';
 import CardBook from '../components/elements/CardBook';
 import CardLoading from '../components/elements/CardLoading';
