@@ -1,11 +1,20 @@
 import { useEffect } from 'react';
 import Button from '../components/elements/Button';
 import Input from '../components/elements/Input';
+import useAppContext from '../context/AppContext';
 
 export default function Login() {
+  const context = useAppContext();
+
   useEffect(() => {
     document.title = 'Login';
   });
+
+  async function loginHandler(e) {
+    e.preventDefault();
+    const result = await context.loginHandler(e);
+    console.log(result);
+  }
 
   return (
     <div className='bg-primaryLogin min-h-screen'>
@@ -29,7 +38,7 @@ export default function Login() {
           <h4 className='text-5xl text-white font-bold mb-3'>LOGIN</h4>
           <h4 className='text-4xl text-white font-bold mb-9'>To Smucker's</h4>
 
-          <form className='flex flex-col gap-7 mt-3 w-full' action=''>
+          <form className='flex flex-col gap-7 mt-3 w-full' onSubmit={loginHandler}>
             <Input
               className='rounded-full py-2 px-4 border-white bg-formColor'
               type='text'

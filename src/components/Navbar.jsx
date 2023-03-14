@@ -1,7 +1,13 @@
 import { Link } from 'react-router-dom';
+import useAppContext from '../context/AppContext';
 import Button from './elements/Button';
 
 export default function navbar() {
+  const {
+    username: { username },
+    logoutHandler
+  } = useAppContext();
+
   return (
     <header className='h-20 px-8 border-b-white border-b border-[#CBC2C2] gap-5 flex justify-between items-center'>
       <Link to='/' className='text-[#4783FE] hidden md:block'>
@@ -37,7 +43,21 @@ export default function navbar() {
         </div>
       </form>
       <div>
-        <Button className='p-10'>Login</Button>
+        {username ? (
+          <div className='flex gap-2 items-center'>
+            <Link
+              to='/dashboard'
+              className='text-white cursor-pointer hover:text-gray-300 text-md font-medium'
+            >
+              Welcome, {username}!
+            </Link>
+            <Button color='red' onClick={logoutHandler}>Logout</Button>
+          </div>
+        ) : (
+          <Button>
+            <Link to='/login'>Login</Link>
+          </Button>
+        )}
       </div>
     </header>
   );

@@ -1,10 +1,13 @@
 import { BrowserRouter } from 'react-router-dom';
+import { ContextProvider } from './context/AppContext';
 import AppRoutes from './routes/AppRoutes';
 
 export default function App() {
   return (
     <BrowserRouter>
-      <AppRoutes />
+      <ContextProvider>
+        <AppRoutes />
+      </ContextProvider>
     </BrowserRouter>
   );
 }
