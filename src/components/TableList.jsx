@@ -1,73 +1,113 @@
 import React from 'react';
+import Button from './elements/Button';
 
-function TableList({ data, ...props }) {
+export default function TableList({ data, ...props }) {
+  const handleDescString = (str, maxLength) => {
+    if (str === undefined) {
+      return ' ';
+    } else {
+      return str.slice(0, maxLength) + '...';
+    }
+  };
+
   return (
-    <div className='flex lg:items-center lg:justify-center'>
-      <table className='table bg-white rounded-lg shadow dark:bg-gray-700 '>
+    <div className='flex lg:items-center'>
+      <table className='table rounded-lg shadow bg-slate-600 '>
         <thead>
           <tr className='text-xs'>
-            <th className='p-4 font-medium text-gray-900 uppercase border-b-2 dark:border-dark-5 whitespace-nowrap dark:text-gray-100'>
+            <th className='p-4 font-medium uppercase border-b-2 dark:border-dark-5 whitespace-nowrap text-white'>
               No.
             </th>
-            <th className='p-4 font-medium text-gray-900 uppercase border-b-2 dark:border-dark-5 whitespace-nowrap dark:text-gray-100'>
+            <th className='p-4 font-medium uppercase border-b-2 dark:border-dark-5 whitespace-nowrap text-white'>
               Action
             </th>
-            <th className='p-4 font-medium text-gray-900 uppercase border-b-2 dark:border-dark-5 whitespace-nowrap dark:text-gray-100'>
+            <th className='p-4 font-medium uppercase border-b-2 dark:border-dark-5 whitespace-nowrap text-white'>
               Judul Buku
             </th>
-            <th className='p-4 font-medium text-gray-900 uppercase border-b-2 dark:border-dark-5 whitespace-nowrap dark:text-gray-100'>
+            <th className='p-4 font-medium uppercase border-b-2 dark:border-dark-5 whitespace-nowrap text-white'>
               cover
             </th>
-            <th className='p-4 font-medium text-gray-900 uppercase border-b-2 dark:border-dark-5 whitespace-nowrap dark:text-gray-100'>
-              author
+            <th className='p-4 font-medium uppercase border-b-2 dark:border-dark-5 whitespace-nowrap text-white'>
+              penulis
             </th>
-            <th className='p-4 font-medium text-gray-900 uppercase border-b-2 dark:border-dark-5 whitespace-nowrap dark:text-gray-100'>
-              phone
+            <th className='p-4 font-medium uppercase border-b-2 dark:border-dark-5 whitespace-nowrap text-white'>
+              kategori
             </th>
-            <th className='p-4 font-medium text-gray-900 uppercase border-b-2 dark:border-dark-5 whitespace-nowrap dark:text-gray-100'>
-              company
+            <th className='p-4 font-medium uppercase border-b-2 dark:border-dark-5 whitespace-nowrap text-white'>
+              penerbit
             </th>
-            <th className='p-4 font-medium text-gray-900 uppercase border-b-2 dark:border-dark-5 whitespace-nowrap dark:text-gray-100'>
-              Website
+            <th className='p-4 font-medium uppercase border-b-2 dark:border-dark-5 whitespace-nowrap text-white'>
+              tahun
+            </th>
+            <th className='p-4 font-medium uppercase border-b-2 dark:border-dark-5 whitespace-nowrap text-white'>
+              rating
+            </th>
+            <th className='p-4 font-medium uppercase border-b-2 dark:border-dark-5 whitespace-nowrap text-white'>
+              bahasa
+            </th>
+            <th className='p-4 font-medium uppercase border-b-2 dark:border-dark-5 whitespace-nowrap text-white'>
+              description
             </th>
           </tr>
         </thead>
         <tbody>
           {data !== null &&
-            data?.map((item, i) => (
-              <tr
-                className='text-xs text-gray-700 dark:text-gray-100'
-                key={item.id}
-              >
+            data.map((item, i) => (
+              <tr className='text-xs text-white' key={item.id}>
                 <td className='p-4 border-b-2 dark:border-dark-5'>{i + 1}</td>
                 <td className='w-40 p-4 border-b-2 dark:border-dark-5 min-w-min'>
-                  {/* <Button
-                                    color='yellow'
-                                    value={item.id}
-                                    onClick={() => {
-                                        props.getAllData(item)
-                                    }}
-                                >
-                                    Detail
-                                </Button> */}
+                  <div className='flex flex-row space-x-1'>
+                    <div>
+                      <Button
+                        className='px-5'
+                        color='green'
+                        value={item.id}
+                        onClick={() => {
+                          props.handleEditBook(item);
+                        }}
+                      >
+                        Edit
+                      </Button>
+                    </div>
+                    <div>
+                      <Button
+                        color='red'
+                        value={item.id}
+                        onClick={() => {
+                          props.handleDeleteBook(item);
+                        }}
+                      >
+                        Delete
+                      </Button>
+                    </div>
+                  </div>
                 </td>
                 <td className='w-40 p-4 border-b-2 dark:border-dark-5 min-w-min'>
-                  {item.name}
+                  {item.title}
                 </td>
                 <td className='p-4 border-b-2 dark:border-dark-5'>
-                  {item.username}
+                  <img srch={item.cover} alt='img' width={20} />
                 </td>
                 <td className='p-4 border-b-2 dark:border-dark-5'>
-                  {item.email}
+                  {item.author}
                 </td>
                 <td className='p-4 border-b-2 dark:border-dark-5 '>
-                  {item.phone}
+                  {item.category}
                 </td>
                 <td className='p-4 border-b-2 dark:border-dark-5'>
-                  {item.website}
+                  {item.publisher}
                 </td>
                 <td className='p-4 border-b-2 dark:border-dark-5'>
-                  {item.company.name}
+                  {item.year}
+                </td>
+                <td className='p-4 border-b-2 dark:border-dark-5'>
+                  {item.rating}
+                </td>
+                <td className='p-4 border-b-2 dark:border-dark-5'>
+                  {item.language}
+                </td>
+                <td className='p-4 border-b-2 dark:border-dark-5'>
+                  {handleDescString(item.description, 10)}
                 </td>
               </tr>
             ))}
@@ -76,5 +116,3 @@ function TableList({ data, ...props }) {
     </div>
   );
 }
-
-export default TableList;
