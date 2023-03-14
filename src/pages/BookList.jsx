@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import Navbar from '../components/Navbar';
 import Category from '../components/elements/Category';
 import CardBook from '../components/elements/CardBook';
 import CardLoading from '../components/elements/CardLoading';
@@ -59,14 +60,9 @@ export default function BookList() {
 
   return (
     <div className='bg-[#212327] text-white min-h-screen pb-10'>
-      <div className='h-20 border-b-white border-b-2 flex justify-center items-center'>
-        <p className='uppercase font-bold tracking-widest'>
-          ini ceritanya navbar
-        </p>
-      </div>
-      {/* <Navbar/> */}
-      <div className='container md:flex mx-auto gap-12'>
-        <div className='pt-[52px] flex flex-col'>
+      <Navbar/>
+      <div className='container px-2 md:px-0 md:flex mx-auto gap-12'>
+        <div className='pt-2 md:pt-[52px] flex flex-col'>
           <h2 className='uppercase font-bold text-xl'>FILTER</h2>
           <div
             className='w-full md:w-72 border border-white mt-3 shadow-[0_2px_4px_3px_#FAF2F240]'

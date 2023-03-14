@@ -2,16 +2,16 @@ import Button from './elements/Button';
 
 export default function navbar() {
   return (
-    <header className='h-20 px-8 border-b-white border-b border-[#CBC2C2] flex justify-between items-center'>
-      <div className='text-[#4783FE]'>
+    <header className='h-20 px-8 border-b-white border-b border-[#CBC2C2] gap-5 flex justify-between items-center'>
+      <div className='text-[#4783FE] hidden md:block'>
         <h1 className='font-bold text-2xl'>SMUCKER'S</h1>
       </div>
-      <form className='flex items-center w-1/3'>
+      <form className='flex items-center w-full md:w-1/3'>
         <div className='relative w-full'>
           <input
             type='text'
             id='voice-search'
-            className='bg-transparent border transition duration-200 border-gray-300 text-gray-100 text-sm rounded-3xl focus:ring-2 focus:outline-none focus:ring-gray-600 block w-full px-5 p-2.5'
+            className='bg-transparent border transition duration-200 border-gray-300 text-gray-100 text-sm rounded-3xl focus:ring-2 focus:border-gray-500 focus:outline-none focus:ring-gray-500 block w-full px-5 p-2.5'
             placeholder='Cari buku'
             required
           />
@@ -35,7 +35,6 @@ export default function navbar() {
           </button>
         </div>
       </form>
-
       <div>
         <Button className='p-10'>Login</Button>
       </div>

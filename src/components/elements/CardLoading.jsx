@@ -9,7 +9,9 @@ const CardLoading = () => {
         <div className='w-3/4 mx-auto bg-gray-300 h-4 rounded'></div>
         <div className='w-full bg-gray-300 h-4 rounded'></div>
       </div>
-			<div className='h-8 bg-gray-300 rounded-b'></div>
+      <div className='h-8 bg-gray-300 rounded-b flex justify-center items-center'>
+        <div className='w-2/3 bg-gray-500 h-4 rounded'></div>
+      </div>
     </div>
   );
 }
