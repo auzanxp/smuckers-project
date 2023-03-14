@@ -51,7 +51,7 @@ export default function navbar() {
             >
               Welcome, {username}!
             </Link>
-            <Button color='red' onClick={logoutHandler}>Logout</Button>
+            <p onClick={logoutHandler} className='text-red-400 cursor-pointer font-bold'>Logout</p>
           </div>
         ) : (
           <Button>
