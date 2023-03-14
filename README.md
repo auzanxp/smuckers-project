@@ -14,6 +14,132 @@
   </p>
 </div>
 
+# API BACKEND
+## ROUTE BOOKS
+> GET | [`http://18.136.104.200/books`](http://18.136.104.200/books)
+- untuk mengambil data semua buku
+> GET | [`http://18.136.104.200/books/{id}`](http://18.136.104.200/books/{id})
+- untuk mengambil detail buku
+> POST | [`http://18.136.104.200/login`](http://18.136.104.200/books/{id})
+- login dulu buat dapetin access_token \
+Payload yang harus dikirimkan: \
+`{
+  "username": "",
+  "password: ""
+}`
+
+
+
+| username | password |
+| --- | --- |
+| angga | angga |
+| auzan | auzan |
+| maman | maman |
+| baharudin | baharudin |
+| irfan | irfan |
+| rafi | rafi |
+> POST | [`http://18.136.104.200/books/create`](http://18.136.104.200/books/create)
+- untuk menambah buku baru harus mengirmkan token (login dulu)
+Harus mengirimkan properti berikut: \
+title: \
+author: \
+publisher: \
+year: (integer) \
+isbn: \
+language: \
+page: \
+length: \
+weigth: \
+width: \
+cover: (URL IMAGE) \
+description: \
+category: \
+rating:
+Contoh penggunaanya:
+```
+function addBookHandler(data){
+  const response = await axios.post("http://18.136.104.200/books/create",{
+    title:  "",
+    author: "",
+    publisher: "",
+    year:  "",
+    isbn: "",
+    language: "",
+    page: "",
+    length: "",
+    weigth: "",
+    width: "",
+    cover: "(URL IMAGE)",
+    description: "",
+    category: "",
+    rating: ""
+  },{
+    headers: {
+      token: localStorage.getItem('access_token')
+    }
+  })
+  console.log(data);
+}
+```
+> PUT | [`http://18.136.104.200/books/:id/edit`](http://18.136.104.200/books/:id/edit)
+- untuk mengedit buku (WAJIB MENGIRIMKAN ID)
+Bisa mengirimkan salah satu properti dibawah ini: \
+title: \
+author: \
+publisher: \
+year: (integer) \
+isbn: \
+language: \
+page: \
+length: \
+weigth: \
+width: \
+cover: (URL IMAGE) \
+description: \
+category: \
+rating:
+Contoh Penggunaanya:
+\
+```
+function editBookHandler(data){
+  const response = await axios.put(`http://18.136.104.200/books/{$data.id}/edit`,{
+    title:  "",
+    author: "",
+    publisher: "",
+    year:  "",
+    isbn: "",
+    language: "",
+    page: "",
+    length: "",
+    weigth: "",
+    width: "",
+    cover: "(URL IMAGE)",
+    description: "",
+    category: "",
+    rating: ""
+  },{
+    headers: {
+      token: localStorage.getItem('access_token')
+    }
+  })
+  console.log(data);
+}
+```
+> DELETE | [`http://18.136.104.200/books/:id`](http://18.136.104.200/books/:id)
+- untuk menghapus buku (WAJIB MENGIRIMKAN ID) \
+Contoh penggunaanya:
+```
+function deleteBookHandler(data){
+  const response = await axios.delete(`http://18.136.104.200/books/{$data.id}`,{
+    headers: {
+      token: localStorage.getItem('access_token')
+    }
+  })
+  console.log(data);
+}
+```
+
+
 
 ## Install
 
