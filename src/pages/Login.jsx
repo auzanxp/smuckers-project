@@ -5,7 +5,7 @@ export default function Login() {
   return (
     <div className="bg-primaryLogin min-h-screen">
       <div className='flex justify-start px-8'>
-        <h4 className='text-4xl text-primary font-bold m-8'>SMUCKER’S</h4>
+        <a href="/" className='text-4xl text-primary font-bold m-8'>SMUCKER’S</a>
       </div>
 
       
