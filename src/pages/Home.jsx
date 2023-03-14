@@ -1,19 +1,29 @@
 import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import Button from '../components/elements/Button';
 import Input from '../components/elements/Input';
 import Label from '../components/elements/Label';
 import Footer from '../components/Footer';
+import useAppContext from '../context/AppContext';
 
 export default function Home() {
-  useEffect(()=>{
-    document.title = 'Home'
-  })
+  const {
+    username: { username },
+  } = useAppContext();
+
+  useEffect(() => {
+    document.title = 'Home';
+  });
   return (
     <div className='bg-slate-800 min-h-screen'>
       <div className='flex place-items-end justify-end p-8'>
-        <Button type='link' to='/login'>
-          Login
-        </Button>
+        {username ? (
+          <Link to='/dashboard' className='text-white cursor-pointer hover:text-gray-300 text-md font-medium'>Welcome, {username}!</Link>
+        ) : (
+          <Button type='link' to='/login'>
+            Login
+          </Button>
+        )}
       </div>
       <div className='continer mx-auto flex flex-col place-items-center space-y-14'>
         <h1 className='text-7xl font-bold text-primary'>SMUCKER’S</h1>

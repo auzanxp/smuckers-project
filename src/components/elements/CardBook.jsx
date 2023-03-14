@@ -10,17 +10,17 @@ const CardBook = ({ data }) => {
     const roundedRating = Math.floor(rating);
 
     for (let i = 0; i < roundedRating; i++) {
-      star.push(<Star />);
+      star.push(<Star key={Math.random()}/>);
     }
 
     const remainder = rating % 1;
     if (remainder !== 0) {
-      star.push(<StarHalf />);
+      star.push(<StarHalf key={Math.random} />);
     }
 
     const emptyStars = 5 - Math.ceil(rating);
     for (let i = 0; i < emptyStars; i++) {
-      star.push(<StarEmpty />);
+      star.push(<StarEmpty key={Math.random()}/>);
     }
 
     return star;
@@ -33,7 +33,7 @@ const CardBook = ({ data }) => {
     >
       <div className='p-4'>
         <img
-          src='https://pub-static.fotor.com/assets/projects/pages/dddda0b59fb9433eb53e7174981c8b67/blue-minimal-novel-cover-6e355184dc3545c6bec6a9f618f83e0d.jpg'
+          src={data.cover === "" ? 'https://pub-static.fotor.com/assets/projects/pages/dddda0b59fb9433eb53e7174981c8b67/blue-minimal-novel-cover-6e355184dc3545c6bec6a9f618f83e0d.jpg' : data.cover}
           alt=''
           className='object-cover h-52 w-full'
         />
