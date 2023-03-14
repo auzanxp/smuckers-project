@@ -1,9 +1,13 @@
+import { useEffect } from 'react';
 import Button from '../components/elements/Button';
 import Input from '../components/elements/Input';
 import Label from '../components/elements/Label';
 import Footer from '../components/Footer';
 
 export default function Home() {
+  useEffect(()=>{
+    document.title = 'Home'
+  })
   return (
     <div className='bg-slate-800 min-h-screen'>
       <div className='flex place-items-end justify-end p-8'>
