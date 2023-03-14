@@ -1,11 +1,12 @@
+import { Link } from 'react-router-dom';
 import Button from './elements/Button';
 
 export default function navbar() {
   return (
     <header className='h-20 px-8 border-b-white border-b border-[#CBC2C2] gap-5 flex justify-between items-center'>
-      <div className='text-[#4783FE] hidden md:block'>
+      <Link to='/' className='text-[#4783FE] hidden md:block'>
         <h1 className='font-bold text-2xl'>SMUCKER'S</h1>
-      </div>
+      </Link>
       <form className='flex items-center w-full md:w-1/3'>
         <div className='relative w-full'>
           <input

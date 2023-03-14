@@ -2,8 +2,30 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Star from './Star';
 import StarHalf from './StarHalf';
+import StarEmpty from './StarEmpty';
 
-const CardBook = ({data}) => {
+const CardBook = ({ data }) => {
+  function ratingStar(rating) {
+    let star = [];
+    const roundedRating = Math.floor(rating);
+
+    for (let i = 0; i < roundedRating; i++) {
+      star.push(<Star />);
+    }
+
+    const remainder = rating % 1;
+    if (remainder !== 0) {
+      star.push(<StarHalf />);
+    }
+
+    const emptyStars = 5 - Math.ceil(rating);
+    for (let i = 0; i < emptyStars; i++) {
+      star.push(<StarEmpty />);
+    }
+
+    return star;
+  }
+
   return (
     <Link
       to={`/books/${data?.id}`}
@@ -18,11 +40,7 @@ const CardBook = ({data}) => {
         <div className='flex flex-col justify-evenly items-center mt-2 text-center'>
           <h3 className='text-[#FE9F47] flex items-center'>
             {data.rating} | &nbsp;
-            <div className='inline-flex gap-1'>
-             {
-              data.rating
-             }
-            </div>
+            <div className='inline-flex gap-1'>{ratingStar(data.rating)}</div>
           </h3>
           <h4 className='text-md'>
             {data.author} | {data.year}
