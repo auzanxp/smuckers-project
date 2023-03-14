@@ -4,7 +4,9 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: '#4783FE'
+        primary: '#4783FE',
+        primaryLogin: '#212327',
+        formColor: '#414654',
       },
     },
   },
