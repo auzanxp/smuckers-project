@@ -1,5 +1,7 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
 import Input from '../../components/elements/Input';
 import TableList from '../../components/TableList';
 
@@ -79,6 +81,31 @@ export default function ListData() {
       author: '',
       publisher: '',
     });
+  };
+
+  const handleDeleteData = (param) => {
+    let IdBook = parseInt(param);
+    console.log(IdBook)
+    // try {
+    //   axios.delete(`http://18.136.104.200/books/${IdBook}`, {
+    //     headers: {
+    //       token: JSON.parse(localStorage.getItem('authentications')),
+    //     },
+    //   });
+    //   setFetchStatus(false);
+    //   toast.success('Data Berhasil Dihapus!', {
+    //     position: 'top-center',
+    //     autoClose: 5000,
+    //     hideProgressBar: false,
+    //     closeOnClick: true,
+    //     pauseOnHover: true,
+    //     draggable: true,
+    //     progress: undefined,
+    //     theme: 'dark',
+    //   });
+    // } catch (error) {
+    //   console.log(error);
+    // }
   };
 
   return (
@@ -249,10 +276,22 @@ export default function ListData() {
             )}
           </div>
           <div className='w-full overflow-x-scroll'>
-            <TableList data={books} />
+            <TableList data={books} handleDeleteBook={handleDeleteData} />
           </div>
         </div>
       </div>
+      <ToastContainer
+        position='top-center'
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme='dark'
+      />
     </div>
   );
 }

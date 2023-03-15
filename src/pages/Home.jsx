@@ -15,7 +15,7 @@ export default function Home() {
     document.title = 'Home';
   });
   return (
-    <div className='bg-slate-800 min-h-screen'>
+    <div className='bg-primaryLogin min-h-screen'>
       <div className='flex place-items-end justify-end p-8'>
         {username ? (
           <Link
