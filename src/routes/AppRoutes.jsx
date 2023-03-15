@@ -15,8 +15,8 @@ export default function AppRoutes() {
     <Routes>
       <Route path='/' element={<Home />} />
       <Route path='/login' element={<Guest el={<Login />} />} />
-      <Route path='/booklist' element={<BookList />} />
-      <Route path='/booklist/:id' element={<BookDetail />} />
+      <Route path='/books' element={<BookList />} />
+      <Route path='/books/:id' element={<BookDetail />} />
       <Route
         path='/dashboard'
         element={
@@ -30,7 +30,7 @@ export default function AppRoutes() {
         }
       />
       <Route
-        path='/list-data'
+        path='/dashboard/books'
         element={
           <Auth
             el={
@@ -42,7 +42,7 @@ export default function AppRoutes() {
         }
       />
       <Route
-        path='/form-buku'
+        path='/dashboard/books/add'
         element={
           <Auth
             el={
@@ -54,7 +54,7 @@ export default function AppRoutes() {
         }
       />
       <Route
-        path='/form-buku/:id'
+        path='/books/edit/:id'
         element={
           <Layout>
             <AddBook />

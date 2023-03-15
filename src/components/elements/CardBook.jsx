@@ -29,11 +29,15 @@ const CardBook = ({ data }) => {
   return (
     <Link
       to={`/books/${data?.id}`}
-      className='border min-h-full w-44 md:w-52 bg-[#414654] rounded-tr-3xl rounded-bl-3xl overflow-hidden flex flex-col justify-between hover:shadow-[0_0px_15px_5px_rgba(250,242,242,0.25)] transition duration-300'
+      className='border min-h-full w-44 md:w-56 bg-[#414654] rounded-tr-3xl rounded-bl-3xl overflow-hidden flex flex-col justify-between hover:shadow-[0_0px_15px_5px_rgba(250,242,242,0.25)] transition duration-300'
     >
-      <div className='p-4'>
+      <div className='px-4 py-2'>
         <img
-          src={data.cover === "" ? 'https://pub-static.fotor.com/assets/projects/pages/dddda0b59fb9433eb53e7174981c8b67/blue-minimal-novel-cover-6e355184dc3545c6bec6a9f618f83e0d.jpg' : data.cover}
+          src={
+            data.cover === ''
+              ? 'https://media.istockphoto.com/id/1223190360/id/vektor/buka-siluet-vektor-buku-ikon-logo-simbol-tanda-tangan-ilustrasi-hitam-putih.jpg?s=612x612&w=0&k=20&c=hlKnSXIvdC7_n7Zfmzh-XcSmXnqrE3prOfphfkhG_Os='
+              : data.cover
+          }
           alt=''
           className='object-cover h-52 w-full'
         />

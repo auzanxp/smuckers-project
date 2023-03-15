@@ -18,7 +18,12 @@ export default function Home() {
     <div className='bg-slate-800 min-h-screen'>
       <div className='flex place-items-end justify-end p-8'>
         {username ? (
-          <Link to='/dashboard' className='text-white cursor-pointer hover:text-gray-300 text-md font-medium'>Welcome, {username}!</Link>
+          <Link
+            to='/dashboard'
+            className='text-white cursor-pointer hover:text-gray-300 text-md font-medium'
+          >
+            Welcome, {username}!
+          </Link>
         ) : (
           <Button type='link' to='/login'>
             Login
@@ -26,7 +31,7 @@ export default function Home() {
         )}
       </div>
       <div className='continer mx-auto flex flex-col place-items-center space-y-14'>
-        <h1 className='text-7xl font-bold text-primary'>SMUCKER’S</h1>
+        <h1 className='text-7xl font-bold text-primary'>LIBRARIFY</h1>
         <div className='flex w-1/2'>
           <form className='w-full'>
             <Label className='sr-only'>Cari</Label>
@@ -49,15 +54,19 @@ export default function Home() {
                 </svg>
               </div>
               <Input
-                className='block  w-full p-4 pl-10 rounded-full'
+                className='block w-full p-4 pl-10 rounded-full transition duration-200 focus:shadow-[0_0_15px_5px_#FAF2F240]'
                 placeholder='Cari Buku'
               />
             </div>
           </form>
         </div>
         <div>
-          <Button className='py-2 px-8' type='link' to='/booklist'>
-            Cari Buku
+          <Button
+            className='py-2 px-20 rounded-sm active:scale-95 transition duration-200'
+            type='link'
+            to='/books'
+          >
+            Browse a books
           </Button>
         </div>
         <div className='font-bold text-white'>

@@ -11,14 +11,17 @@ export default function navbar() {
   return (
     <header className='h-20 px-8 border-b-white border-b border-[#CBC2C2] gap-5 flex justify-between items-center'>
       <Link to='/' className='text-[#4783FE] hidden md:block'>
-        <h1 className='font-bold text-2xl'>SMUCKER'S</h1>
+        <h1 className='font-bold text-xl tracking-wide'>
+          <span className='font-extrabold text-3xl text-[#80a0e5]'>L</span>
+          ibrarify
+        </h1>
       </Link>
       <form className='flex items-center w-full md:w-1/3'>
         <div className='relative w-full'>
           <input
             type='text'
             id='voice-search'
-            className='bg-transparent border transition duration-200 border-gray-300 text-gray-100 text-sm rounded-3xl focus:ring-2 focus:border-gray-500 focus:outline-none focus:ring-gray-500 block w-full px-5 p-2.5'
+            className='bg-transparent border transition duration-200 border-gray-300 text-gray-100 text-sm rounded-3xl focus:outline-none focus:shadow-[0_0_10px_3px_#FAF2F240] block w-full px-5 p-2.5'
             placeholder='Cari buku'
             required
           />
@@ -44,17 +47,15 @@ export default function navbar() {
       </form>
       <div>
         {username ? (
-          <div className='flex gap-2 items-center'>
-            <Link
-              to='/dashboard'
-              className='text-white cursor-pointer hover:text-gray-300 text-md font-medium'
-            >
-              Welcome, {username}!
-            </Link>
-            <p onClick={logoutHandler} className='text-red-400 cursor-pointer font-bold'>Logout</p>
-          </div>
+          <button
+            type='button'
+            onClick={logoutHandler}
+            className='text-red-400 cursor-pointer font-bold hover:text-red-300'
+          >
+            Logout
+          </button>
         ) : (
-          <Button>
+          <Button className='px-7 py-1'>
             <Link to='/login'>Login</Link>
           </Button>
         )}

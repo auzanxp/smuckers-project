@@ -84,9 +84,9 @@ export default function BookList() {
   return (
     <div className='bg-[#212327] text-white min-h-screen pb-10'>
       <Navbar />
-      <div className='container px-2 md:px-0 md:flex mx-auto gap-12'>
-        <div className='pt-2 md:pt-[52px] flex flex-col'>
-          <h2 className='uppercase font-bold text-xl'>FILTER</h2>
+      <div className='container px-2 md:px-0 md:flex mx-auto space-x-5'>
+        <div className='pt-2 md:pt-[60px] flex flex-col'>
+          <h2 className='uppercase font-bold text-lg'>FILTER</h2>
           <div className='w-full md:w-72 border border-white mt-3 shadow-[0_2px_4px_3px_#FAF2F240]'>
             <div className='flex flex-col justify-center items-start px-8 py-7'>
               <div
@@ -110,11 +110,13 @@ export default function BookList() {
               </div>
               <div className={isOpenFilter ? 'hidden' : ''}>
                 <form onSubmit={filterBooksHandler}>
-                  <Category name='Teknologi' />
-                  <Category name='Novel' />
-                  <Category name='Majalah' />
-                  <Category name='Komik' />
-                  <Category name='Pendidikan' />
+                  <div className='space-y-1'>
+                    <Category name='Teknologi' />
+                    <Category name='Novel' />
+                    <Category name='Majalah' />
+                    <Category name='Komik' />
+                    <Category name='Pendidikan' />
+                  </div>
                   <div className='my-1'>
                     <p className='font-bold text-lg -ml-3'>Tahun Terbit</p>
                   </div>
@@ -134,13 +136,13 @@ export default function BookList() {
                   <div className='flex gap-4 md:justify-between w-full mt-4'>
                     <button
                       type='submit'
-                      className='py-1 px-5 w-24 rounded-lg text-[#171717] font-bold bg-[#63C37C] hover:bg-[#3e9d57] transition duration-200 focus:outline-none focus:outline-[#63C37C]'
+                      className='py-1 px-5 w-24 rounded-lg text-gray-800 font-bold bg-[#63C37C] hover:bg-[#3e9d57] transition duration-200 focus:outline-none focus:outline-[#63C37C]'
                     >
                       Simpan
                     </button>
                     <button
                       type='reset'
-                      className='py-1 w-24 px-5 font-bold rounded-lg border-2 focus:outline-none border-white hover:bg-white hover:text-[#171717] transition duration-200 focus:outline-gray-50'
+                      className='py-1 w-24 px-5 font-bold rounded-lg border-2 focus:outline-none border-white hover:bg-white hover:text-gray-800 transition duration-200 focus:outline-gray-50'
                       onClick={() => {
                         setFilteredBooks([]);
                         setIsReset(!isReset);
@@ -200,7 +202,7 @@ export default function BookList() {
               </div>
             </div>
           </div>
-          <div className='grid grid-cols-2 md:grid-cols-4 place-items-baseline gap-4'>
+          <div className='grid grid-cols-2 md:grid-cols-4 place-items-stretch gap-6'>
             {renderBooks()}
           </div>
         </div>
