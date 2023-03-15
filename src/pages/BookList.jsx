@@ -32,7 +32,6 @@ export default function BookList() {
         },
       } = await axios.get('http://18.136.104.200/books');
       setBooks(books);
-      console.log("FETCH!");
     })();
   }, [isReset]);
 
@@ -133,7 +132,8 @@ export default function BookList() {
         <div className='w-full'>
           <BookListContainer
             data={books}
-            pageSize='4'
+            setBooks={setBooks}
+            pageSize='8'
             filteredBooks={filteredBooks}
           />
         </div>
