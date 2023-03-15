@@ -6,14 +6,13 @@ import Navbar from '../components/Navbar';
 import Category from '../components/elements/Category';
 import CardBook from '../components/elements/CardBook';
 import CardLoading from '../components/elements/CardLoading';
-import ButtonGroup from '../components/elements/ButtonGroup';
+import BookListContainer from '../components/elements/BookListContainer';
 
 export default function BookList() {
   const [isOpenFilter, setIsOpenFilter] = useState(false);
   const [books, setBooks] = useState([]);
-  const [filteredBooks, setFilteredBooks] = useState([]);
   const [isReset, setIsReset] = useState(false);
-  const [activeButton, setActiveButton] = useState('Terkait');
+  const [filteredBooks, setFilteredBooks] = useState([]);
 
   const toastrOptions = {
     position: 'top-center',
@@ -37,43 +36,6 @@ export default function BookList() {
     })();
   }, [isReset]);
 
-  const handleButtonClick = (option) => {
-    setActiveButton(option);
-    // urutkan buku berdasarkan terbaru
-    if (option === 'Terbaru') {
-      const sortedBooks = books.sort((a, b) => b.year - a.year);
-      setBooks(sortedBooks);
-    } else {
-      // urutkan berdasarkan rating
-      const sortedBooks = books.sort((a, b) => b.rating - a.rating);
-      setBooks(sortedBooks);
-    }
-  };
-
-  function renderBooks() {
-    if (filteredBooks.length > 0) {
-      return filteredBooks.map((book) => (
-        <CardBook key={book.id} data={book} />
-      ));
-    }
-
-    if (books.length > 0) {
-      return books.map((book) => <CardBook key={book.id} data={book} />);
-    }
-    return (
-      <>
-        <CardLoading />
-        <CardLoading />
-        <CardLoading />
-        <CardLoading />
-        <CardLoading />
-        <CardLoading />
-        <CardLoading />
-        <CardLoading />
-      </>
-    );
-  }
-
   function filterBooksHandler(e) {
     e.preventDefault();
     setFilteredBooks([]);
@@ -91,12 +53,11 @@ export default function BookList() {
       return;
     }
     setFilteredBooks(filteredBooks);
-    console.log(bookYearStart, bookYearEnd);
   }
 
   return (
     <div className='bg-[#212327] text-white min-h-screen pb-10'>
-      <Navbar books={books}/>
+      <Navbar books={books} />
       <div className='container px-2 md:px-0 md:flex mx-auto md:space-x-5'>
         <div className='pt-2 md:pt-[60px] flex flex-col'>
           <h2 className='uppercase font-bold text-lg'>FILTER</h2>
@@ -170,54 +131,11 @@ export default function BookList() {
           </div>
         </div>
         <div className='w-full'>
-          <div className='border border-white my-3'>
-            <div className='md:flex justify-between items-center px-8 py-4'>
-              <div className='md:flex items-center gap-2'>
-                <p className='font-medium text-lg mb-2 md:mb-0'>Urutkan</p>
-                <ButtonGroup
-                  options={['Terkait', 'Terbaru']}
-                  activeOption={activeButton}
-                  onChange={handleButtonClick}
-                />
-              </div>
-              <div className='mt-2 md:mt-0 flex items-center gap-1'>
-                <button type='button'>
-                  <svg
-                    xmlns='http://www.w3.org/2000/svg'
-                    width={16}
-                    height={16}
-                    fill='currentColor'
-                    className='bi bi-chevron-left stroke-2'
-                    viewBox='0 0 16 16'
-                  >
-                    <path
-                      fillRule='evenodd'
-                      d='M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z'
-                    />
-                  </svg>
-                </button>
-                1/{Math.ceil(books.length / 8)}
-                <button type='button'>
-                  <svg
-                    xmlns='http://www.w3.org/2000/svg'
-                    width={16}
-                    height={16}
-                    fill='currentColor'
-                    className='bi bi-chevron-right'
-                    viewBox='0 0 16 16'
-                  >
-                    <path
-                      fillRule='evenodd'
-                      d='M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z'
-                    />
-                  </svg>
-                </button>
-              </div>
-            </div>
-          </div>
-          <div className='grid grid-cols-2 md:grid-cols-4 place-items-stretch gap-6'>
-            {renderBooks()}
-          </div>
+          <BookListContainer
+            data={books}
+            pageSize='4'
+            filteredBooks={filteredBooks}
+          />
         </div>
       </div>
     </div>
