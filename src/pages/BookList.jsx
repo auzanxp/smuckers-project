@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.min.css';
 import Navbar from '../components/Navbar';
 import Category from '../components/elements/Category';
 import CardBook from '../components/elements/CardBook';
@@ -13,6 +15,15 @@ export default function BookList() {
   const [isReset, setIsReset] = useState(false);
   const [activeButton, setActiveButton] = useState('Terkait');
 
+  const toastrOptions = {
+    position: 'top-center',
+    autoClose: 2500,
+    hideProgressBar: true,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+  };
+
   useEffect(() => {
     document.title = 'Book List';
     (async () => {
@@ -22,6 +33,7 @@ export default function BookList() {
         },
       } = await axios.get('http://18.136.104.200/books');
       setBooks(books);
+      console.log("FETCH!");
     })();
   }, [isReset]);
 
@@ -75,7 +87,8 @@ export default function BookList() {
         (book.year >= bookYearStart && book.year <= bookYearEnd)
     );
     if (filteredBooks.length === 0) {
-      return alert('Tidak ada buku yang sesuai dengan filter yang dipilih');
+      toast.error('Buku tidak ditemukan', toastrOptions);
+      return;
     }
     setFilteredBooks(filteredBooks);
     console.log(bookYearStart, bookYearEnd);
@@ -83,8 +96,8 @@ export default function BookList() {
 
   return (
     <div className='bg-[#212327] text-white min-h-screen pb-10'>
-      <Navbar />
-      <div className='container px-2 md:px-0 md:flex mx-auto space-x-5'>
+      <Navbar books={books}/>
+      <div className='container px-2 md:px-0 md:flex mx-auto md:space-x-5'>
         <div className='pt-2 md:pt-[60px] flex flex-col'>
           <h2 className='uppercase font-bold text-lg'>FILTER</h2>
           <div className='w-full md:w-72 border border-white mt-3 shadow-[0_2px_4px_3px_#FAF2F240]'>
