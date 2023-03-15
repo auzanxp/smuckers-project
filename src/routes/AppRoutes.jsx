@@ -1,5 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import Layout from '../components/dashboard/Layout';
+import { Auth, Guest } from '../middleware';
 import BookDetail from '../pages/BookDetail';
 import BookList from '../pages/BookList';
 import AddBook from '../pages/dashboard/AddBook';
@@ -13,31 +14,43 @@ export default function AppRoutes() {
   return (
     <Routes>
       <Route path='/' element={<Home />} />
-      <Route path='/login' element={<Login />} />
+      <Route path='/login' element={<Guest el={<Login />} />} />
       <Route path='/booklist' element={<BookList />} />
       <Route path='/booklist/:id' element={<BookDetail />} />
       <Route
         path='/dashboard'
         element={
-          <Layout>
-            <Dashboard />
-          </Layout>
+          <Auth
+            el={
+              <Layout>
+                <Dashboard />
+              </Layout>
+            }
+          />
         }
       />
       <Route
         path='/list-data'
         element={
-          <Layout>
-            <ListData />
-          </Layout>
+          <Auth
+            el={
+              <Layout>
+                <ListData />
+              </Layout>
+            }
+          />
         }
       />
       <Route
         path='/form-buku'
         element={
-          <Layout>
-            <AddBook />
-          </Layout>
+          <Auth
+            el={
+              <Layout>
+                <AddBook />
+              </Layout>
+            }
+          />
         }
       />
       <Route
