@@ -2,7 +2,6 @@ import useAppContext from "../../context/AppContext";
 
 export default function Dashboard() {
   const {username: {username}} = useAppContext();
-  console.log(username);
   return (
     <div className="flex flex-col justify-center items-center">
       <div className="text-center">
