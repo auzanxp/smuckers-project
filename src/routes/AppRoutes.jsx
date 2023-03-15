@@ -54,7 +54,7 @@ export default function AppRoutes() {
         }
       />
       <Route
-        path='/books/edit/:id'
+        path='/dashboard/books/edit/:id'
         element={
           <Layout>
             <AddBook />

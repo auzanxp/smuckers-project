@@ -1,34 +1,35 @@
-import { useState } from 'react';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
 import Button from '../../components/elements/Button';
 import Input from '../../components/elements/Input';
-import Label from '../../components/elements/Label';
 import TextArea from '../../components/elements/TextArea';
 
 const initState = {
   title: '',
   author: '',
   publisher: '',
-  year: 'integer',
+  year: '',
   isbn: '',
   language: '',
   page: '',
   length: '',
-  weigth: '',
+  weight: '',
   width: '',
   cover: '',
   description: '',
   category: '',
   rating: '',
+  is_borrowed: false,
 };
 
 export default function AddBook() {
   const [input, setInput] = useState(initState);
-  const { Id } = useParams();
+  const Id = useParams().id;
 
   const handleInput = (e) => {
     let { value, name, type } = e.target;
-
     if (type === 'radio') {
       setInput({ ...input, [name]: parseInt(value) });
     } else {
@@ -36,12 +37,66 @@ export default function AddBook() {
     }
   };
 
+  const handleSubmitBooks = (e) => {
+    e.preventDefault();
+    const { is_borrowed, ...data } = input;
+    console.log(input);
+    try {
+      if (Id) {
+        axios.put(
+          `http://18.136.104.200/books/${Id}/edit`,
+          { ...input },
+          {
+            headers: {
+              token: JSON.parse(localStorage.getItem('authentications')),
+            },
+          }
+        );
+        setInput(initState);
+      } else {
+        axios.post(
+          'http://18.136.104.200/books/create',
+          { ...data },
+          {
+            headers: {
+              token: JSON.parse(localStorage.getItem('authentications')),
+            },
+          }
+        );
+      }
+      setInput(initState);
+      toast.success('OK Data Berhasil disubmit!', {
+        position: 'top-center',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'dark',
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    const getBookDetail = async () => {
+      const { data } = await axios.get(`http://18.136.104.200/books/${Id}`);
+      const response = await data.data.book;
+      setInput(response);
+    };
+    if (Id !== undefined) {
+      getBookDetail();
+    }
+  }, [Id]);
+
   return (
     <div>
       <h1 className='text-xl font-medium uppercase mb-7 border-b-2 text-white py-2'>
         {Id === undefined ? 'Tambah Buku' : 'Update Buku'}
       </h1>
-      <form>
+      <form onSubmit={handleSubmitBooks}>
         <div className='grid grid-cols-2 gap-5'>
           <div>
             <div className='mb-2'>
@@ -90,15 +145,22 @@ export default function AddBook() {
               <label className='block mb-2 text-sm font-medium text-white'>
                 Kategori
               </label>
-              <Input
-                required
-                type='text'
-                className='rounded-md p-1'
+              <select
+                className='border rounded-md p-2 text-white bg-slate-600 border-indigo-900/30 focus:outline-none antialiased transition duration-200 shadow-sm w-full font-normal placeholder:text-md placeholder:font-light'
                 name='category'
                 value={input.category}
                 onChange={handleInput}
-                placeholder='Kategori Buku'
-              />
+                required
+              >
+                <option value='' disabled>
+                  Pilih Kategori
+                </option>
+                <option value='Teknologi'>Teknologi</option>
+                <option value='Novel'>Novel</option>
+                <option value='Majalah'>Majalah</option>
+                <option value='Komik'>Komik</option>
+                <option value='Pendidikan'>Pendidikan</option>
+              </select>
             </div>
             <div className='mb-2'>
               <label className='block mb-2 text-sm font-medium text-white'>
@@ -114,8 +176,20 @@ export default function AddBook() {
                 placeholder='Tahun'
               />
             </div>
-          </div>
-          <div>
+            <div className='mb-2'>
+              <label className='block mb-2 text-sm font-medium text-white'>
+                ISBN
+              </label>
+              <Input
+                required
+                type='text'
+                className='rounded-md p-1'
+                name='isbn'
+                value={input.isbn}
+                onChange={handleInput}
+                placeholder='No-ISBN'
+              />
+            </div>
             <div className='mb-2'>
               <label className='block mb-2 text-sm font-medium text-white'>
                 Tahun
@@ -128,6 +202,50 @@ export default function AddBook() {
                 value={input.year}
                 onChange={handleInput}
                 placeholder='Tahun'
+              />
+            </div>
+          </div>
+          <div>
+            <div className='mb-2'>
+              <label className='block mb-2 text-sm font-medium text-white'>
+                Lebar Buku
+              </label>
+              <Input
+                required
+                type='text'
+                className='rounded-md p-1'
+                name='width'
+                value={input.width}
+                onChange={handleInput}
+                placeholder='exp: 20 cm'
+              />
+            </div>{' '}
+            <div className='mb-2'>
+              <label className='block mb-2 text-sm font-medium text-white'>
+                Panjang Buku
+              </label>
+              <Input
+                required
+                type='text'
+                className='rounded-md p-1'
+                name='length'
+                value={input.length}
+                onChange={handleInput}
+                placeholder='exp: 10 cm'
+              />
+            </div>{' '}
+            <div className='mb-2'>
+              <label className='block mb-2 text-sm font-medium text-white'>
+                Berat Buku
+              </label>
+              <Input
+                required
+                type='text'
+                className='rounded-md p-1'
+                name='weight'
+                value={input.weight}
+                onChange={handleInput}
+                placeholder='exp: 200 gram'
               />
             </div>
             <div className='mb-2'>
@@ -178,10 +296,10 @@ export default function AddBook() {
               </label>
               <input
                 type='radio'
-                name='job_status'
+                name='is_borrowed'
                 id='open'
-                value={1}
-                checked={input.job_status === 1 && true}
+                value={0}
+                checked={input.is_borrowed === 0}
                 onChange={handleInput}
                 className='mr-1'
               />
@@ -190,10 +308,10 @@ export default function AddBook() {
               </label>
               <input
                 type='radio'
-                name='job_status'
+                name='is_borrowed'
                 id='close'
-                value={0}
-                checked={input.job_status === 0 && true}
+                value={1}
+                checked={input.is_borrowed === 1}
                 onChange={handleInput}
                 className='mr-1'
               />
@@ -220,6 +338,18 @@ export default function AddBook() {
           </Button>
         </div>
       </form>
+      <ToastContainer
+        position='top-center'
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme='dark'
+      />
     </div>
   );
 }
