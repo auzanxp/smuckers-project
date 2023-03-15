@@ -1,9 +1,9 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import useAppContext from '../context/AppContext';
 import Button from './elements/Button';
 
-export default function Navbar({ books= [] }) {
+export default function Navbar({ books = [] }) {
   const [fillteredBook, setFillteredBook] = useState([]);
   const [hiddenData, setHiddenData] = useState(true);
   const {
@@ -11,10 +11,45 @@ export default function Navbar({ books= [] }) {
     logoutHandler,
   } = useAppContext();
 
-  function searchBookHandler(e){
-    e.preventDefault()
+  const inputRef = useRef(null);
+  const formRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      console.log("input ref: ", inputRef.current);
+      console.log("form ref: ", formRef.current);
+      if (
+        inputRef.current &&
+        !inputRef.current.contains(event.target) &&
+        formRef.current &&
+        !formRef.current.contains(event.target)
+      ) {
+        setHiddenData(true);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
+  function searchBookHandler(e) {
+    e.preventDefault();
     setHiddenData(false);
-    const filteredBooks = books.filter((book) => book.title.toLowerCase().includes(e.target[0].value.toLowerCase()) || book.author.toLowerCase().includes(e.target[0].value.toLowerCase()) || book.category.toLowerCase().includes(e.target[0].value.toLowerCase()) || book.year.toString().includes(e.target[0].value) || book.language.toLowerCase().includes(e.target[0].value.toLowerCase()) || book.publisher.toLowerCase().includes(e.target[0].value.toLowerCase()) || book.isbn.toLowerCase().includes(e.target[0].value.toLowerCase()));
+    const filteredBooks = books.filter(
+      (book) =>
+        book.title.toLowerCase().includes(e.target[0].value.toLowerCase()) ||
+        book.author.toLowerCase().includes(e.target[0].value.toLowerCase()) ||
+        book.category.toLowerCase().includes(e.target[0].value.toLowerCase()) ||
+        book.year.toString().includes(e.target[0].value) ||
+        book.language.toLowerCase().includes(e.target[0].value.toLowerCase()) ||
+        book.publisher
+          .toLowerCase()
+          .includes(e.target[0].value.toLowerCase()) ||
+        book.isbn.toLowerCase().includes(e.target[0].value.toLowerCase())
+    );
     setFillteredBook(filteredBooks);
   }
 
@@ -26,7 +61,11 @@ export default function Navbar({ books= [] }) {
           ibrarify
         </h1>
       </Link>
-      <form className='relative flex flex-col items-center w-full md:w-1/3' onSubmit={searchBookHandler}>
+      <form
+        className='relative flex flex-col items-center w-full md:w-1/3 form-search'
+        onSubmit={searchBookHandler}
+        ref={formRef}
+      >
         <div className='relative w-full'>
           <input
             type='text'
@@ -56,15 +95,20 @@ export default function Navbar({ books= [] }) {
           </button>
         </div>
         <div
+          ref={inputRef}
           className={`${
             hiddenData ? 'hidden' : 'absolute'
-          } mt-11 h-auto w-full rounded opacity-90 bg-gray-500 text-gray-700 p-2 search-box`}
+          } mt-11 h-auto w-full rounded opacity-90 bg-gray-500 text-gray-700 p-2 input-search`}
         >
           <div className='flex flex-col gap-2 p-2'>
-          <p className='text-gray-100'>Hasil:</p>
+            <p className='text-gray-100'>Hasil:</p>
             {fillteredBook.length !== 0 ? (
               fillteredBook.map((book) => (
-                <Link to={`/books/${book.id}`} className='border rounded-md flex justify-between items-center px-2 py-1'>
+                <Link
+                  to={`/books/${book.id}`}
+                  key={book.id}
+                  className='border rounded-md flex justify-between items-center px-2 py-1 transition duration-150 hover:bg-gray-400'
+                >
                   <div className='text-gray-100'>
                     <h1>{book.title}</h1>
                   </div>
