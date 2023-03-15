@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { TableCellsIcon, BookOpenIcon } from '@heroicons/react/24/solid';
+import { TableCellsIcon, BookOpenIcon, SquaresPlusIcon } from '@heroicons/react/24/solid';
 import { useLocation } from 'react-router-dom';
 import Brand from '../Brand';
 import SideNavLink from '../elements/SideNavLink';
@@ -21,10 +21,16 @@ export default function Sidebar() {
           icon={<BookOpenIcon />}
         />
         <SideNavLink
-          href='/listdata'
-          name='list'
-          active={locationPath === '/listdata' && true}
+          href='/list-data'
+          name='list Data'
+          active={locationPath === '/list-data' && true}
           icon={<TableCellsIcon />}
+        />
+        <SideNavLink
+          href='/form-buku'
+          name='Tambah Buku'
+          active={locationPath === '/form-buku' && true}
+          icon={<SquaresPlusIcon className='w-5 h-5' />}
         />
       </div>
     </>
