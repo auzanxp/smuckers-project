@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 
 export default function BookDetail() {
@@ -13,71 +13,79 @@ export default function BookDetail() {
   }
 
   useEffect(() => {
-    (
-      async () => {
-        const { data: { data: { books } }} = await axios.get('http://18.136.104.200/books');
-        setBooks(books);
-        const filterBookById = books.filter((book) => book.id === +bookId);
-        document.title = `Book Detail - ${filterBookById[0].title}`;
-        setDetailBook(filterBookById[0]);
-      }
-    )()
-  }, []);
+    (async () => {
+      const {
+        data: {
+          data: { books },
+        },
+      } = await axios.get('http://18.136.104.200/books');
+      setBooks(books);
+      const filterBookById = books.filter((book) => book.id === +bookId);
+      document.title = `Book Detail - ${filterBookById[0].title}`;
+      setDetailBook(filterBookById[0]);
+    })();
+  }, [bookId]);
 
   return (
     <div className='bg-slate-800 min-h-screen'>
-      <Navbar books={books}/>
-      <div className='continer h-screen flex flex-col place-items-center space-y-14'>
-        <div className='border-2 p-7 m-auto w-1/2 border-sky-500 flex-row flex'>
-          <div className='w-2/6 mr-7'>
-            <picture className='rounded-lg w-56 block overflow-hidden'>
+      <Navbar books={books} />
+      {detailBook?.id ? (
+        <div className='my-4 rounded-lg border p-10 mx-auto w-3/4 md:flex-row flex flex-col md:items-center md:justify-center gap-10'>
+          <div className=''>
+            <picture className='rounded-lg w-56 block overflow-hidden cursor-pointer'>
               <img
-                className='hover:scale-125'
+                className='hover:scale-125 transition duration-200 w-full'
                 src={detailBook?.cover}
               />
             </picture>
             <div className='flex flex-row mt-3'>
               <picture className='rounded-lg w-16 cursor-pointer block overflow-hidden'>
                 <img
-                  className='hover:scale-125'
+                  className='hover:scale-125 transition duration-200'
                   src={detailBook?.cover}
                 />
               </picture>
               <picture className='rounded-lg w-16 cursor-pointer mx-3 block overflow-hidden'>
                 <img
-                  className='hover:scale-125'
+                  className='hover:scale-125 transition duration-200'
                   src={detailBook?.cover}
                 />
               </picture>
               <picture className='rounded-lg w-16 cursor-pointer block overflow-hidden'>
                 <img
-                  className='hover:scale-125'
+                  className='hover:scale-125 transition duration-200'
                   src={detailBook?.cover}
                 />
               </picture>
             </div>
           </div>
-          <div className='w-4/6'>
-            <div className='flex-row flex'>
+          <div className=''>
+            <div className='flex justify-between'>
               <p className='text-white font-bold text-3xl w-80'>
                 {detailBook?.title}
               </p>
-              <div className='flex justify-center h-9 w-28'>
+              <div className='h-9 w-28'>
                 <button
                   type='button'
-                  className={detailBook?.is_borrowed ? 'inline-block bg-green-500 rounded-full w-full text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]' : 'inline-block bg-red-500 rounded-full w-full pt-2.5 pb-2 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]'}
+                  className={
+                    detailBook?.is_borrowed
+                      ? 'inline-block bg-green-500 rounded-full w-full text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]'
+                      : 'inline-block bg-red-500 rounded-full w-full pt-2.5 pb-2 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]'
+                  }
                 >
-                  <span>{detailBook?.is_borrowed ? 'Tersedia' : 'Di Pinjam'}</span>
+                  <span>
+                    {detailBook?.is_borrowed ? 'Tersedia' : 'Di Pinjam'}
+                  </span>
                 </button>
               </div>
             </div>
-            <p className='text-white text-2xl'>{detailBook?.author} | {detailBook?.year}</p>
+            <p className='text-white text-2xl'>
+              {detailBook?.author} | {detailBook?.year}
+            </p>
             <p className='text-white text-2xl font-bold mt-4'>
               Deskripsi buku :
             </p>
-            <p className='text-white font-normal'>
-              {detailBook?.description}
-            </p>
+            <p className='text-white font-normal'>{detailBook?.description}</p>
             <p className='text-white font-semibold mt-4'>Detail Buku</p>
             <div className='grid gap-4 grid-cols-2'>
               <p className='text-white font-normal'>
@@ -123,7 +131,11 @@ export default function BookDetail() {
             </div>
           </div>
         </div>
-      </div>
+      ) : (
+        <div className='flex justify-center my-12'>
+          <h1 className='text-3xl font-bold text-white'>Loading...</h1>
+        </div>
+      )}
     </div>
   );
 }

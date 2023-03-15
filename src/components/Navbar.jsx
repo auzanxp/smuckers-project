@@ -16,8 +16,6 @@ export default function Navbar({ books = [] }) {
 
   useEffect(() => {
     const handleClickOutside = (event) => {
-      console.log("input ref: ", inputRef.current);
-      console.log("form ref: ", formRef.current);
       if (
         inputRef.current &&
         !inputRef.current.contains(event.target) &&
@@ -77,7 +75,7 @@ export default function Navbar({ books = [] }) {
           />
           <button
             type='submit'
-            className='absolute inset-y-0 right-0 flex items-center pr-3'
+            className='absolute inset-y-0 right-0 flex items-center px-3 border-l'
           >
             <svg
               aria-hidden='true'

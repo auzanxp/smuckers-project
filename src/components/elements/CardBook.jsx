@@ -34,7 +34,8 @@ const CardBook = ({ data }) => {
       <div className='px-4 py-2'>
         <img
           src={
-            data.cover === ''
+            // cek apakah stringnya ada http atau tidak
+            !data.cover?.includes('http')
               ? 'https://media.istockphoto.com/id/1223190360/id/vektor/buka-siluet-vektor-buku-ikon-logo-simbol-tanda-tangan-ilustrasi-hitam-putih.jpg?s=612x612&w=0&k=20&c=hlKnSXIvdC7_n7Zfmzh-XcSmXnqrE3prOfphfkhG_Os='
               : data.cover
           }

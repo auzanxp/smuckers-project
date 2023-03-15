@@ -14,12 +14,12 @@ function Pagination(props) {
     setActiveButton(option);
     // urutkan buku berdasarkan terbaru
     if (option === 'Terbaru') {
-      const sortedBooks = books.sort((a, b) => b.year - a.year);
-      setBooks(sortedBooks);
+      const sortedBooks = props.data.sort((a, b) => b.year - a.year);
+      props.setBooks(sortedBooks);
     } else {
       // urutkan berdasarkan rating
-      const sortedBooks = books.sort((a, b) => b.rating - a.rating);
-      setBooks(sortedBooks);
+      const sortedBooks = props.data.sort((a, b) => b.rating - a.rating);
+      props.setBooks(sortedBooks);
     }
   };
 
