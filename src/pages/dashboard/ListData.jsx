@@ -20,7 +20,7 @@ export default function ListData() {
     document.title = 'List Data';
     const getData = () => {
       axios
-        .get('http://18.136.104.200/books')
+        .get('https://books-api.anggakurnia.me/books')
         .then((res) => {
           setBooks(res.data.data.books);
           setFetchStatus(true);

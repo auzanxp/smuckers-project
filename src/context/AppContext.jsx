@@ -9,7 +9,7 @@ export default function useAppContext() {
   return useContext(AppContext);
 }
 
-const URL = 'http://18.136.104.200';
+const URL = 'https://books-api.anggakurnia.me';
 
 export function ContextProvider({ children }) {
   const initName = () => {
