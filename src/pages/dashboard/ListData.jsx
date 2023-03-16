@@ -1,8 +1,7 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { toast, ToastContainer } from 'react-toastify';
-import Input from '../../components/elements/Input';
+import { ToastContainer } from 'react-toastify';
+import Button from '../../components/elements/Button';
 import TableList from '../../components/TableList';
 
 export default function ListData() {
@@ -36,7 +35,9 @@ export default function ListData() {
     e.preventDefault();
     setBooks(null);
     const getSearch = async () => {
-      const { data } = await axios.get('http://18.136.104.200/books');
+      const { data } = await axios.get(
+        'https://books-api.anggakurnia.me/books'
+      );
       const response = data.data.books;
       const searchData = response.filter((ress) => {
         return Object.values(ress)
@@ -65,7 +66,9 @@ export default function ListData() {
     e.preventDefault();
     setBooks(null);
     const getFilterData = async () => {
-      const { data } = await axios.get('http://18.136.104.200/books');
+      const { data } = await axios.get(
+        'https://books-api.anggakurnia.me/books'
+      );
       const response = data.data.books;
       const filterData = response.filter((res) => {
         return (
@@ -114,23 +117,23 @@ export default function ListData() {
                     />
                   </svg>
                 </div>
-                <Input
-                  className='block p-4 pl-10 rounded-xl'
+                <input
+                  className='block p-4 pl-10 rounded-xl bg-slate-600 text-white focus:outline-none antialiased transition duration-200 shadow-sm w-full font-normal placeholder:text-md placeholder:font-ligh'
                   placeholder='Cari Buku'
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
                   required
                 />
-                <button
+                <Button
                   type='submit'
-                  className='text-white absolute right-2.5 bottom-2.5 bg-primary shadow-md hover:bg-slate-300 hover:text-black focus:ring-4 focus:border-primary focus:outline-none focus:ring-slate-400 font-medium rounded-lg text-sm px-4 py-2'
+                  className='absolute transform hover:scale-110 duration-300 ease-in-out right-2.5 bottom-2.5 px-4 py-2'
                 >
                   Cari
-                </button>
+                </Button>
               </div>
             </form>
           </div>
-          <div className='w-full p-3 mb-2  rounded-xl bg-slate-600'>
+          <div className='w-full p-3 mb-4  rounded-xl bg-gray-800'>
             <div className='flex flex-row items-center justify-start text-base font-medium'>
               <div className='flex flex-row gap-2 '>
                 {!isShow && (
@@ -140,7 +143,7 @@ export default function ListData() {
                     }}
                   >
                     <svg
-                      className='w-8 h-8 text-primary'
+                      className='w-8 h-8 text-white'
                       width='24'
                       height='24'
                       viewBox='0 0 24 24'
@@ -162,7 +165,7 @@ export default function ListData() {
                     }}
                   >
                     <svg
-                      className='w-8 h-8 text-primary'
+                      className='w-8 h-8 text-white'
                       width='24'
                       height='24'
                       viewBox='0 0 24 24'
@@ -187,30 +190,34 @@ export default function ListData() {
                   <form onSubmit={handleFilterData} className='w-full'>
                     <div className='mt-2'>
                       <label
-                        htmlFor='small-input'
-                        className='block mb-2 text-sm font-medium '
+                        className='block mb-2 text-sm font-medium text-white'
                       >
                         Kategori
                       </label>
-                      <input
-                        type='text'
-                        className='block w-full p-2 mb-2 text-gray-900 bg-white border border-pink-300 rounded-lg focus:outline-none sm:text-xs focus:ring-pink-700 focus:border-pink-700 '
+                      <select
+                        className='border rounded-md p-1 bg-slate-600 text-white  border-indigo-900/30 focus:outline-none antialiased transition duration-200 shadow-sm w-full font-normal placeholder:text-base placeholder:font-normal'
                         name='category'
-                        placeholder='exp: Novel'
                         value={input.category}
                         onChange={handleInput}
-                      />
+                        required
+                      >
+                        <option value='' disabled>
+                          Pilih Kategori
+                        </option>
+                        <option value='Teknologi'>Teknologi</option>
+                        <option value='Novel'>Novel</option>
+                        <option value='Majalah'>Majalah</option>
+                        <option value='Komik'>Komik</option>
+                        <option value='Pendidikan'>Pendidikan</option>
+                      </select>
                     </div>
                     <div className='mt-2'>
-                      <label
-                        htmlFor='small-input'
-                        className='block mb-2 text-sm font-medium '
-                      >
-                        penulis
+                      <label className='block mb-2 text-sm font-medium text-white'>
+                        Penulis
                       </label>
                       <input
                         type='text'
-                        className='block w-full p-2 mb-2 text-gray-900 bg-white border border-pink-300 rounded-lg focus:outline-none sm:text-xs focus:ring-pink-700 focus:border-pink-700'
+                        className='block w-full p-2 mb-2 bg-slate-600 text-white font-medium rounded-lg focus:outline-none sm:text-xs'
                         name='author'
                         placeholder='exp: Andrea'
                         value={input.author}
@@ -218,34 +225,35 @@ export default function ListData() {
                       />
                     </div>
                     <div className='mt-2'>
-                      <label
-                        htmlFor='small-input'
-                        className='block mb-2 text-sm font-medium '
-                      >
+                      <label className='block mb-2 text-sm font-medium text-white'>
                         Penerbit
                       </label>
                       <input
                         type='text'
-                        className='block w-full p-2 mb-4 text-gray-900 bg-white border border-pink-300 rounded-lg focus:outline-none sm:text-xs focus:ring-pink-700 focus:border-pink-700'
+                        className='block w-full p-2 mb-4 bg-slate-600 text-white rounded-lg focus:outline-none sm:text-xs'
                         name='publisher'
                         placeholder='exp: Erlangga'
                         value={input.publisher}
                         onChange={handleInput}
                       />
                     </div>
-                    <button
-                      type='submit'
-                      className='py-1 px-5 w-24 rounded-lg text-[#171717] font-bold bg-[#63C37C] hover:bg-[#3e9d57] transition duration-200 focus:outline-none focus:outline-[#63C37C]'
-                    >
-                      Simpan
-                    </button>
-                    <button
-                      type='reset'
-                      className='py-1 w-24 px-5 font-bold rounded-lg border-2 focus:outline-none border-white hover:bg-white hover:text-[#171717] transition duration-200 focus:outline-gray-50'
-                      onClick={() => setFetchStatus(false)}
-                    >
-                      Reset
-                    </button>
+                    <div className='flex flex-row space-x-2'>
+                      <button
+                        type='submit'
+                        className='py-1 px-5 w-24 rounded-lg text-white hover:bg-[#414654]  border-2 border-white focus:outline-none transform transition hover:scale-105 duration-300 ease-in-out'
+                      >
+                        Simpan
+                      </button>
+                      <button
+                        type='reset'
+                        className='py-1 w-24 px-5  text-white rounded-lg border-2 focus:outline-none border-white hover:bg-[#414654] transform transition hover:scale-105 duration-300 ease-in-out '
+                        onClick={() => {
+                          setFetchStatus(false);
+                        }}
+                      >
+                        Reset
+                      </button>
+                    </div>
                   </form>
                 </div>
               </div>
