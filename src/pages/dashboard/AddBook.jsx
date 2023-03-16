@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import Button from '../../components/elements/Button';
 import Input from '../../components/elements/Input';
@@ -37,6 +37,7 @@ const initState = {
 export default function AddBook({ title = 'Add Book' }) {
   const [input, setInput] = useState(initState);
   const Id = useParams().id;
+  const navigate = useNavigate()
 
   const handleInput = (e) => {
     let { value, name, type } = e.target;
@@ -63,6 +64,7 @@ export default function AddBook({ title = 'Add Book' }) {
         );
         toast.success("Buku berhasil diubah.", toastrOptions);
         setInput(initState);
+        navigate('/dashboard/books');
       } else {
         const result = await axios.post(
           'https://books-api.anggakurnia.me/books/create',
@@ -75,6 +77,7 @@ export default function AddBook({ title = 'Add Book' }) {
         );
         toast.success("Buku berhasil ditambahkan.", toastrOptions);
         setInput(initState);
+        navigate('/dashboard/books');
       }
     } catch (error) {
       toast.error(error.response.data.message, toastrOptions);
