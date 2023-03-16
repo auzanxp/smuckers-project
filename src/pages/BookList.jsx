@@ -55,12 +55,12 @@ export default function BookList() {
   }
 
   return (
-    <div className='bg-[#212327] text-white min-h-screen pb-10'>
+    <div className='bg-gradient-to-l from-gray-900 to-slate-800 text-white min-h-screen pb-10'>
       <Navbar books={books} />
       <div className='container px-2 md:px-0 md:flex mx-auto md:space-x-5'>
         <div className='pt-2 md:pt-[60px] flex flex-col'>
           <h2 className='uppercase font-bold text-lg'>FILTER</h2>
-          <div className='w-full md:w-72 border border-white mt-3 shadow-[0_2px_4px_3px_#FAF2F240]'>
+          <div className='w-full md:w-72 mt-3 rounded-lg bg-gray-900 shadow-[0_2px_4px_3px_#FAF2F240]'>
             <div className='flex flex-col justify-center items-start px-8 py-7'>
               <div
                 className='flex items-center justify-between w-full mb-1 cursor-pointer'
@@ -109,13 +109,13 @@ export default function BookList() {
                   <div className='flex gap-4 md:justify-between w-full mt-4'>
                     <button
                       type='submit'
-                      className='py-1 px-5 w-24 rounded-lg text-gray-800 font-bold bg-[#63C37C] hover:bg-[#3e9d57] transition duration-200 focus:outline-none focus:outline-[#63C37C]'
+                      className='py-1 px-5 w-24 rounded-lg text-white font-bold hover:bg-[#414654]  border-2 border-white focus:outline-none transform transition hover:scale-105 duration-300 ease-in-out'
                     >
                       Simpan
                     </button>
                     <button
                       type='reset'
-                      className='py-1 w-24 px-5 font-bold rounded-lg border-2 focus:outline-none border-white hover:bg-white hover:text-gray-800 transition duration-200 focus:outline-gray-50'
+                      className='py-1 w-24 px-5 font-bold rounded-lg border-2 focus:outline-none border-white hover:bg-[#414654] transform transition hover:scale-105 duration-300 ease-in-out '
                       onClick={() => {
                         setFilteredBooks([]);
                         setIsReset(!isReset);

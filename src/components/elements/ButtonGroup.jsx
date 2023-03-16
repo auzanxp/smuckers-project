@@ -10,7 +10,7 @@ function ButtonGroup({ options, activeOption, onChange }) {
             option === activeOption
               ? 'bg-[#414654] text-white'
               : 'bg-transparent'
-          } border transition duration-150 focus:outline-none focus:shadow-outline active:bg-gray-400 active:text-white`}
+          } border transition duration-150 rounded-md focus:outline-none focus:shadow-outline active:bg-gray-400 active:text-white hover:bg-[#414654]`}
           type='button'
           onClick={() => onChange(option)}
         >
