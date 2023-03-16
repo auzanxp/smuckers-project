@@ -24,7 +24,7 @@ export default function BookList() {
   };
 
   useEffect(() => {
-    document.title = 'Book List';
+    document.title = 'All Books';
     (async () => {
       const {
         data: {
