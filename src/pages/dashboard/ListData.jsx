@@ -17,6 +17,7 @@ export default function ListData() {
   });
 
   useEffect(() => {
+    document.title = 'List Data';
     const getData = () => {
       axios
         .get('http://18.136.104.200/books')

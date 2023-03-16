@@ -18,7 +18,7 @@ export default function BookDetail() {
         data: {
           data: { books },
         },
-      } = await axios.get('http://18.136.104.200/books');
+      } = await axios.get('https://books-api.anggakurnia.me/books');
       setBooks(books);
       const filterBookById = books.filter((book) => book.id === +bookId);
       document.title = `Book Detail - ${filterBookById[0].title}`;

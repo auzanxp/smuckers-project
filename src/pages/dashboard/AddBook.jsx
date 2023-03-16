@@ -44,7 +44,7 @@ export default function AddBook() {
     try {
       if (Id) {
         axios.put(
-          `http://18.136.104.200/books/${Id}/edit`,
+          `https://books-api.anggakurnia.me/books/${Id}/edit`,
           { ...input },
           {
             headers: {
@@ -55,7 +55,7 @@ export default function AddBook() {
         setInput(initState);
       } else {
         axios.post(
-          'http://18.136.104.200/books/create',
+          'https://books-api.anggakurnia.me/books/create',
           { ...data },
           {
             headers: {
@@ -82,13 +82,17 @@ export default function AddBook() {
 
   useEffect(() => {
     const getBookDetail = async () => {
-      const { data } = await axios.get(`http://18.136.104.200/books/${Id}`);
+      const { data } = await axios.get(
+        `https://books-api.anggakurnia.me/books/${Id}`
+      );
       const response = await data.data.book;
       setInput(response);
     };
     if (Id !== undefined) {
       getBookDetail();
+      document.title = 'Update Book';
     }
+    document.title = 'Add Book';
   }, [Id]);
 
   return (

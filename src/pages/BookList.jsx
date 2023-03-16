@@ -24,13 +24,13 @@ export default function BookList() {
   };
 
   useEffect(() => {
-    document.title = 'Book List';
+    document.title = 'All Books';
     (async () => {
       const {
         data: {
           data: { books },
         },
-      } = await axios.get('http://18.136.104.200/books');
+      } = await axios.get('https://books-api.anggakurnia.me/books');
       setBooks(books);
     })();
   }, [isReset]);
