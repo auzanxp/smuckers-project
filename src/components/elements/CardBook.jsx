@@ -29,7 +29,7 @@ const CardBook = ({ data }) => {
   return (
     <Link
       to={`/books/${data?.id}`}
-      className='min-h-full w-44 md:w-56 bg-gray-900 rounded-tr-3xl rounded-bl-3xl overflow-hidden flex flex-col justify-between hover:shadow-[0_0px_15px_5px_rgba(250,242,242,0.25)] transition transform hover:scale-105 duration-300 ease-in-out'
+      className='min-h-full w-44 md:w-56 bg-gray-900 rounded-tr-3xl rounded-bl-3xl overflow-hidden flex flex-col justify-between hover:shadow-[0_0px_15px_5px_rgba(250,242,242,0.25)] transition transform hover:scale-105 duration-300 ease-in-out shadow-[0_0_2px_2px_#FAF2F240]'
     >
       <div className='px-4 py-2'>
         <img

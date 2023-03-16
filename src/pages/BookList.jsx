@@ -6,20 +6,20 @@ import Navbar from '../components/Navbar';
 import Category from '../components/elements/Category';
 import BookListContainer from '../components/elements/BookListContainer';
 
+const toastrOptions = {
+  position: 'top-center',
+  autoClose: 2500,
+  hideProgressBar: true,
+  closeOnClick: true,
+  pauseOnHover: true,
+  draggable: true,
+};
+
 export default function BookList() {
   const [isOpenFilter, setIsOpenFilter] = useState(false);
   const [books, setBooks] = useState([]);
   const [isReset, setIsReset] = useState(false);
   const [filteredBooks, setFilteredBooks] = useState([]);
-
-  const toastrOptions = {
-    position: 'top-center',
-    autoClose: 2500,
-    hideProgressBar: true,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-  };
 
   useEffect(() => {
     document.title = 'All Books';

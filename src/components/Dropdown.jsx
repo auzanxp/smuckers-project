@@ -32,7 +32,7 @@ export default function DropDown({ value }) {
                 className={`${show ? 'block' : 'hidden'
                     } origin-top-right absolute right-0 mt-2 w-fit rounded-md shadow-lg bg-white dark:bg-gray-800 ring-1 ring-black ring-opacity-5`}
             >
-                <Button onClick={logoutHandler} color="red">
+                <Button onClick={logoutHandler} color="red" className='px-5'>
                     <span className="flex flex-col">
                         <span>Logout</span>
                     </span>
