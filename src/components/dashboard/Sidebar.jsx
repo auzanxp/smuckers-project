@@ -35,7 +35,7 @@ export default function Sidebar() {
         <SideNavLink
           href='/dashboard/books/add'
           name='Tambah Buku'
-          active={locationPath === '/books/add' && true}
+          active={locationPath === '/dashboard/books/add' && true}
           icon={<SquaresPlusIcon className='w-5 h-5' />}
         />
       </div>

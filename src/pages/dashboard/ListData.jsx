@@ -84,31 +84,6 @@ export default function ListData() {
     });
   };
 
-  const handleDeleteData = (param) => {
-    let IdBook = parseInt(param);
-    console.log(IdBook)
-    // try {
-    //   axios.delete(`http://18.136.104.200/books/${IdBook}`, {
-    //     headers: {
-    //       token: JSON.parse(localStorage.getItem('authentications')),
-    //     },
-    //   });
-    //   setFetchStatus(false);
-    //   toast.success('Data Berhasil Dihapus!', {
-    //     position: 'top-center',
-    //     autoClose: 5000,
-    //     hideProgressBar: false,
-    //     closeOnClick: true,
-    //     pauseOnHover: true,
-    //     draggable: true,
-    //     progress: undefined,
-    //     theme: 'dark',
-    //   });
-    // } catch (error) {
-    //   console.log(error);
-    // }
-  };
-
   return (
     <div className='w-full min-h-screen shadow-xl rounded-xl'>
       <div className='grid grid-flow-row grid-cols-1 overflow-hidden h-fit lg:grid-flow-col lg:grid-cols-6'>
@@ -277,7 +252,7 @@ export default function ListData() {
             )}
           </div>
           <div className='w-full overflow-x-scroll'>
-            <TableList data={books} handleDeleteBook={handleDeleteData} />
+            <TableList data={books} setFetchStatus={setFetchStatus} />
           </div>
         </div>
       </div>

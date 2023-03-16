@@ -111,7 +111,7 @@ export default function Login() {
             </div>
             <button
               className={`${
-                isLoading && 'disabled opacity-50'
+                isLoading && 'disabled opacity-50 cursor-not-allowed'
               } rounded-full py-2 border border-black font-bold text-white bg-formColor hover:bg-slate-600`}
               disabled={isLoading}
             >

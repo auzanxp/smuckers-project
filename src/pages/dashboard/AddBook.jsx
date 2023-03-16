@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { toast, ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
 import Button from '../../components/elements/Button';
 import Input from '../../components/elements/Input';
 import TextArea from '../../components/elements/TextArea';
@@ -293,7 +293,7 @@ export default function AddBook({ title = 'Add Book' }) {
                 placeholder='Image url'
               />
             </div>
-            <div className='mb-2'>
+            <div className={`${title == 'Add Book' ? 'hidden' : ''} mb-2`}>
               <label className='block mb-3 text-sm font-medium text-white'>
                 Status Pinjam
               </label>
@@ -302,7 +302,7 @@ export default function AddBook({ title = 'Add Book' }) {
                 name='is_borrowed'
                 id='open'
                 value={0}
-                checked={input.is_borrowed === 0}
+                checked={input.is_borrowed === 0 || input.is_borrowed === false}
                 onChange={handleInput}
                 className='mr-1'
               />
@@ -314,7 +314,7 @@ export default function AddBook({ title = 'Add Book' }) {
                 name='is_borrowed'
                 id='close'
                 value={1}
-                checked={input.is_borrowed === 1}
+                checked={input.is_borrowed === 1 || input.is_borrowed === true}
                 onChange={handleInput}
                 className='mr-1'
               />
@@ -341,18 +341,6 @@ export default function AddBook({ title = 'Add Book' }) {
           </Button>
         </div>
       </form>
-      <ToastContainer
-        position='top-center'
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme='dark'
-      />
     </div>
   );
 }

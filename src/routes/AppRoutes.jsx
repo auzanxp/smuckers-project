@@ -57,9 +57,13 @@ export default function AppRoutes() {
       <Route
         path='/dashboard/books/edit/:id'
         element={
-          <Layout>
-            <AddBook title='Edit Book'/>
-          </Layout>
+          <Auth
+            el={
+              <Layout>
+                <AddBook title='Edit Book'/>
+              </Layout>
+            }
+          />
         }
       />
       <Route path='*' element={<NotFound />} />

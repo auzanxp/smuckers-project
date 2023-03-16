@@ -1,9 +1,53 @@
-import React from 'react';
+import React, { useState } from 'react';
+import axios from 'axios';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.min.css';
 import { useNavigate } from 'react-router-dom';
 import Button from './elements/Button';
+import Modal from './elements/Modal';
+
+const toastrOptions = {
+  position: 'top-center',
+  autoClose: 3500,
+  hideProgressBar: true,
+  closeOnClick: true,
+  pauseOnHover: true,
+  draggable: true,
+  darkMode: true,
+};
 
 export default function TableList({ data, ...props }) {
+  const [showModal, setShowModal] = useState({
+    isOpen: false,
+    id: '',
+  });
   const navigate = useNavigate();
+
+  const handleDeleteData = async () => {
+    try {
+      await axios.delete(
+        `https://books-api.anggakurnia.me/books/${showModal.id}`,
+        {
+          headers: {
+            token: JSON.parse(localStorage.getItem('authentications')),
+          },
+        }
+      );
+      toast.success('Data Berhasil Dihapus!', toastrOptions);
+      props.setFetchStatus(false);
+      setShowModal({
+        isOpen: false,
+        id: '',
+      });
+    } catch (error) {
+      toast.error(error.response.data.message, toastrOptions);
+      setShowModal({
+        isOpen: false,
+        id: '',
+      });
+    }
+  };
+
   const handleDescString = (str, maxLength) => {
     if (str === undefined) {
       return ' ';
@@ -14,6 +58,9 @@ export default function TableList({ data, ...props }) {
 
   return (
     <div className='flex lg:items-center'>
+      {showModal.isOpen && (
+        <Modal isOpen={setShowModal} deleteHandler={handleDeleteData} />
+      )}
       <table className='table rounded-lg shadow bg-slate-600 '>
         <thead>
           <tr className='text-xs'>
@@ -56,7 +103,15 @@ export default function TableList({ data, ...props }) {
           </tr>
         </thead>
         <tbody>
-          {data !== null &&
+          {data == null ? (
+            <tr>
+              <td colSpan={12} className='text-center text-gray-100'>
+                <h1 className='my-5 text-2xl font-bold'>
+                  Loading...
+                </h1>
+              </td>
+            </tr>
+          ) : (
             data.map((item, i) => (
               <tr className='text-xs text-white' key={item.id}>
                 <td className='p-4 border-b-2 dark:border-dark-5'>{i + 1}</td>
@@ -77,9 +132,8 @@ export default function TableList({ data, ...props }) {
                     <div>
                       <Button
                         color='red'
-                        value={item.id}
                         onClick={() => {
-                          props.handleDeleteBook(item);
+                          setShowModal({ isOpen: true, id: item.id });
                         }}
                       >
                         Delete
@@ -135,7 +189,8 @@ export default function TableList({ data, ...props }) {
                   {handleDescString(item.description, 10)}
                 </td>
               </tr>
-            ))}
+            ))
+          )}
         </tbody>
       </table>
     </div>
