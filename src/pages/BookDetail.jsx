@@ -1,11 +1,18 @@
+import {
+  ArrowLeftCircleIcon,
+  FaceFrownIcon,
+  FaceSmileIcon,
+} from '@heroicons/react/24/outline';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+import Button from '../components/elements/Button';
 import Navbar from '../components/Navbar';
 
 export default function BookDetail() {
   const [detailBook, setDetailBook] = useState({});
   const [books, setBooks] = useState([]);
+  const navigate = useNavigate();
   const bookId = useParams().id;
   function formatDate(string) {
     var options = { year: 'numeric', month: 'long', day: 'numeric' };
@@ -27,7 +34,7 @@ export default function BookDetail() {
   }, [bookId]);
 
   return (
-    <div className='bg-slate-800 py-5 min-h-screen'>
+    <div className='bg-gradient-to-l from-gray-900 to-slate-800 pb-10 min-h-screen'>
       <Navbar books={books} />
       {detailBook?.id ? (
         <div className='py-4 mt-5 rounded-lg border p-10 mx-auto w-3/4 md:flex-row flex flex-col md:items-center md:justify-center gap-10'>
@@ -36,6 +43,7 @@ export default function BookDetail() {
               <img
                 className='hover:scale-125 transition duration-200 w-full'
                 src={detailBook?.cover}
+                alt='cover buku'
               />
             </picture>
             <div className='flex flex-row mt-3'>
@@ -43,18 +51,21 @@ export default function BookDetail() {
                 <img
                   className='hover:scale-125 transition duration-200'
                   src={detailBook?.cover}
+                  alt='cover buku'
                 />
               </picture>
               <picture className='rounded-lg w-16 cursor-pointer mx-3 block overflow-hidden'>
                 <img
                   className='hover:scale-125 transition duration-200'
                   src={detailBook?.cover}
+                  alt='cover buku'
                 />
               </picture>
               <picture className='rounded-lg w-16 cursor-pointer block overflow-hidden'>
                 <img
                   className='hover:scale-125 transition duration-200'
                   src={detailBook?.cover}
+                  alt='cover buku'
                 />
               </picture>
             </div>
@@ -64,17 +75,21 @@ export default function BookDetail() {
               <p className='text-white font-bold text-3xl w-80'>
                 {detailBook?.title}
               </p>
-              <div className='h-9 w-28'>
+              <div className='h-10 w-32'>
                 <button
-                  type='button'
                   className={
                     detailBook?.is_borrowed
-                      ? 'inline-block bg-green-500 rounded-full w-full text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]'
-                      : 'inline-block bg-red-500 rounded-full w-full pt-2.5 pb-2 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]'
+                      ? 'flex items-center bg-red-600 rounded-md w-full pt-2.5 pb-2 text-xs font-medium uppercase leading-normal text-white  cursor-default [&>svg]:w-7 [&>svg]:h-7'
+                      : 'flex items-center justify-center text-white bg-indigo-700 rounded-md w-full pt-2.5 pb-2 text-xs font-medium uppercase leading-normal cursor-default [&>svg]:w-7 [&>svg]:h-7'
                   }
                 >
+                  {detailBook?.is_borrowed ? (
+                    <FaceFrownIcon />
+                  ) : (
+                    <FaceSmileIcon />
+                  )}
                   <span>
-                    {detailBook?.is_borrowed ? 'Tersedia' : 'Di Pinjam'}
+                    {detailBook?.is_borrowed ? 'Tidak Tersedia' : 'Tersedia'}
                   </span>
                 </button>
               </div>
@@ -120,13 +135,13 @@ export default function BookDetail() {
             </div>
             <div className='flex justify-end space-x-2'>
               <div className='space-y-2'>
-                <Link
-                  to='/books'
-                  type='button'
-                  className='inline-block rounded-full bg-primary px-6 pt-2.5 pb-2 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]'
+                <Button
+                  className='transform hover:scale-110 duration-300 ease-in-out'
+                  onClick={() => navigate(-1)}
                 >
-                  kembali
-                </Link>
+                  <ArrowLeftCircleIcon />
+                  Kembali
+                </Button>
               </div>
             </div>
           </div>
