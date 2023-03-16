@@ -7,13 +7,14 @@ import AddBook from '../pages/dashboard/AddBook';
 import Dashboard from '../pages/dashboard/Dashboard';
 import ListData from '../pages/dashboard/ListData';
 import Home from '../pages/Home';
+import Landing from '../pages/Landing';
 import Login from '../pages/Login';
 import NotFound from '../pages/NotFound';
 
 export default function AppRoutes() {
   return (
     <Routes>
-      <Route path='/' element={<Home />} />
+      <Route path='/' element={<Landing />} />
       <Route path='/login' element={<Guest el={<Login />} />} />
       <Route path='/books' element={<BookList />} />
       <Route path='/books/:id' element={<BookDetail />} />
