@@ -1,5 +1,6 @@
 import { BookOpenIcon, HomeIcon, KeyIcon } from '@heroicons/react/24/outline';
 import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Brand from '../components/Brand';
 import DropDown from '../components/Dropdown';
 import Button from '../components/elements/Button';
@@ -9,11 +10,18 @@ export default function Landing() {
   const {
     username: { username },
   } = useAppContext();
+  const navigate = useNavigate();
 
   useEffect(() => {
     document.title = 'Librarify';
   }, []);
-  
+
+  function searchHandler(e) {
+    e.preventDefault();
+    const search = e.target[0].value;
+    navigate(`/books?search=${search}`);
+  }
+
   return (
     <div
       className='leading-normal min-h-screen tracking-normal text-indigo-400 bg-cover pt-6 bg-fixed'
@@ -81,7 +89,7 @@ export default function Landing() {
             <p className='leading-normal text-base md:text-xl mb-8 text-center md:text-left'>
               Suasana baru literasi dan aktivitas bagi Kawan Perpus!
             </p>
-            <form className='bg-gray-900 opacity-75 w-full shadow-lg rounded-lg px-8 pt-6 pb-8 mb-4'>
+            <form className='bg-gray-900 opacity-75 w-full shadow-lg rounded-lg px-8 pt-6 pb-8 mb-4' onSubmit={searchHandler}>
               <div className='mb-4'>
                 <label
                   className='block text-blue-300 py-2 font-bold mb-2'
@@ -93,7 +101,7 @@ export default function Landing() {
                   className='shadow appearance-none border rounded w-full p-3 text-gray-700 leading-tight focus:ring transform transition hover:scale-105 duration-300 ease-in-out'
                   id='emailaddress'
                   type='text'
-                  placeholder='cari buku'
+                  placeholder='Cari Buku'
                 />
               </div>
               <div className='flex items-center justify-between pt-4'>

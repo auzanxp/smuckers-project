@@ -4,8 +4,6 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
 import Navbar from '../components/Navbar';
 import Category from '../components/elements/Category';
-import CardBook from '../components/elements/CardBook';
-import CardLoading from '../components/elements/CardLoading';
 import BookListContainer from '../components/elements/BookListContainer';
 
 export default function BookList() {
