@@ -27,10 +27,10 @@ export default function BookDetail() {
   }, [bookId]);
 
   return (
-    <div className='bg-slate-800 min-h-screen'>
+    <div className='bg-slate-800 py-5 min-h-screen'>
       <Navbar books={books} />
       {detailBook?.id ? (
-        <div className='my-4 rounded-lg border p-10 mx-auto w-3/4 md:flex-row flex flex-col md:items-center md:justify-center gap-10'>
+        <div className='py-4 mt-5 rounded-lg border p-10 mx-auto w-3/4 md:flex-row flex flex-col md:items-center md:justify-center gap-10'>
           <div className=''>
             <picture className='rounded-lg w-56 block overflow-hidden cursor-pointer'>
               <img
