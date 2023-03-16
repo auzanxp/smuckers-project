@@ -10,10 +10,10 @@ export default function Landing() {
   } = useAppContext();
   return (
     <div
-      className='leading-normal min-h-screen tracking-normal text-indigo-400 bg-cover pt-4 bg-fixed'
+      className='leading-normal min-h-screen tracking-normal text-indigo-400 bg-cover pt-6 bg-fixed'
       style={{ backgroundImage: 'url("/header.png")' }}
     >
-      <div className='h-full'>
+      <div className='h-full px-8'>
         {/*Nav*/}
         <div className='w-full container mx-auto'>
           <div className='w-full flex items-center justify-between'>
