@@ -1,14 +1,17 @@
+import { HomeIcon, KeyIcon } from '@heroicons/react/24/outline';
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import useAppContext from '../context/AppContext';
+import Brand from './Brand';
+import DropDown from './Dropdown';
 import Button from './elements/Button';
+import NavLink from './elements/NavLink';
 
 export default function Navbar({ books = [] }) {
   const [fillteredBook, setFillteredBook] = useState([]);
   const [hiddenData, setHiddenData] = useState(true);
   const {
     username: { username },
-    logoutHandler,
   } = useAppContext();
 
   const inputRef = useRef(null);
@@ -54,10 +57,7 @@ export default function Navbar({ books = [] }) {
   return (
     <header className='h-20 px-8 border-b-white border-b border-[#CBC2C2] gap-5 flex justify-between items-center'>
       <Link to='/' className='text-[#4783FE] hidden md:block'>
-        <h1 className='font-bold text-xl tracking-wide'>
-          <span className='font-extrabold text-3xl text-[#80a0e5]'>L</span>
-          ibrarify
-        </h1>
+        <Brand />
       </Link>
       <form
         className='relative flex flex-col items-center w-full md:w-1/3 form-search'
@@ -129,19 +129,37 @@ export default function Navbar({ books = [] }) {
         </div>
       </form>
       <div>
-        {username ? (
-          <button
-            type='button'
-            onClick={logoutHandler}
-            className='text-red-400 cursor-pointer font-bold hover:text-red-300'
-          >
-            Logout
-          </button>
-        ) : (
-          <Button className='px-7 py-1'>
-            <Link to='/login'>Login</Link>
-          </Button>
-        )}
+        <div className='flex items-center justify-end gap-5'>
+          {username ? (
+            <>
+              <Button
+                type='link'
+                className='transform hover:scale-110 duration-300 ease-in-out'
+                to='/dashboard'
+              >
+                <HomeIcon className='w-2 h-2 sm:h-4 sm:w-4' />
+                Dashboard
+              </Button>
+            </>
+          ) : (
+            <Button
+              type='link'
+              className='transform hover:scale-125 duration-300 ease-in-out'
+              to='/'
+            >
+              <HomeIcon className='w-2 h-2 sm:h-4 sm:w-4' />
+              Beranda
+            </Button>
+          )}
+          {!username ? (
+            <Button type='link' to='/login'>
+              <KeyIcon className='w-2 h-2 sm:h-4 sm:w-4' />
+              Login
+            </Button>
+          ) : (
+            <DropDown value={username} />
+          )}
+        </div>
       </div>
     </header>
   );

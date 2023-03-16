@@ -7,7 +7,7 @@ export default function NavLink({ className, children, href }) {
       to={href}
       className={`${
         className ? className : ''
-      }text-sm sm:text-md text-white hover:text-yellow-500 dark:text-gray-100 transition duration-200 tracking-wider`}
+      }text-sm sm:text-md text-white hover:text-primary dark:text-gray-100 transition duration-200 tracking-wider`}
     >
       {children}
     </Link>

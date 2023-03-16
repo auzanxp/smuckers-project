@@ -9,7 +9,7 @@ export default function useAppContext() {
   return useContext(AppContext);
 }
 
-const URL = 'http://18.136.104.200';
+const URL = 'https://books-api.anggakurnia.me';
 
 export function ContextProvider({ children }) {
   const initName = () => {
@@ -34,13 +34,16 @@ export function ContextProvider({ children }) {
     e.preventDefault();
     try {
       const { data } = await axios.post(`${URL}/login`, {
-				username: e.target[0].value,
-				password: e.target[1].value,
-			});
+        username: e.target[0].value,
+        password: e.target[1].value,
+      });
       if (data?.access_token) {
         setAuthentications(data.access_token);
         setUsername(jwt_decode(data.access_token));
-        localStorage.setItem('authentications', JSON.stringify(data.access_token));
+        localStorage.setItem(
+          'authentications',
+          JSON.stringify(data.access_token)
+        );
         navigate('/dashboard');
       }
       return data;
