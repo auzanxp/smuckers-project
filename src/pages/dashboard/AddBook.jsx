@@ -180,7 +180,7 @@ export default function AddBook({ title = 'Add Book' }) {
                 name='language'
                 value={input.language}
                 onChange={handleInput}
-                placeholder='Tahun'
+                placeholder='Bahasa'
               />
             </div>
             <div className='mb-2'>

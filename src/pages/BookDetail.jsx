@@ -84,9 +84,9 @@ export default function BookDetail() {
                   }
                 >
                   {detailBook?.is_borrowed ? (
-                    <FaceFrownIcon />
+                    <FaceFrownIcon className='mr-1' />
                   ) : (
-                    <FaceSmileIcon />
+                    <FaceSmileIcon className='mr-1' />
                   )}
                   <span>
                     {detailBook?.is_borrowed ? 'Tidak Tersedia' : 'Tersedia'}
