@@ -96,7 +96,7 @@ export default function Navbar({ books = [] }) {
           ref={inputRef}
           className={`${
             hiddenData ? 'hidden' : 'absolute'
-          } mt-11 h-auto w-full rounded opacity-90 bg-gray-500 text-gray-700 p-2 input-search`}
+          } z-10 mt-11 h-auto w-full rounded opacity-90 bg-gray-500 text-gray-700 p-2 input-search`}
         >
           <div className='flex flex-col gap-2 p-2'>
             <p className='text-gray-100'>Hasil:</p>
