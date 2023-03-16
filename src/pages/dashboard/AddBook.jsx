@@ -24,7 +24,7 @@ const initState = {
   is_borrowed: false,
 };
 
-export default function AddBook() {
+export default function AddBook({ title = 'Add Book' }) {
   const [input, setInput] = useState(initState);
   const Id = useParams().id;
 
@@ -90,9 +90,8 @@ export default function AddBook() {
     };
     if (Id !== undefined) {
       getBookDetail();
-      document.title = 'Update Book';
     }
-    document.title = 'Add Book';
+    document.title = title;
   }, [Id]);
 
   return (
