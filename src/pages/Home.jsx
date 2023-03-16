@@ -1,8 +1,11 @@
+import { KeyIcon } from '@heroicons/react/24/outline';
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import DropDown from '../components/Dropdown';
 import Button from '../components/elements/Button';
 import Input from '../components/elements/Input';
 import Label from '../components/elements/Label';
+import NavLink from '../components/elements/NavLink';
 import Footer from '../components/Footer';
 import useAppContext from '../context/AppContext';
 
@@ -17,18 +20,17 @@ export default function Home() {
   return (
     <div className='bg-primaryLogin min-h-screen'>
       <div className='flex place-items-end justify-end p-8'>
-        {username ? (
-          <Link
-            to='/dashboard'
-            className='text-white cursor-pointer hover:text-gray-300 text-md font-medium'
-          >
-            Welcome, {username}!
-          </Link>
-        ) : (
-          <Button type='link' to='/login'>
-            Login
-          </Button>
-        )}
+        <div className='flex items-center justify-end gap-5'>
+          {username && <NavLink href='/dashboard'>Dashboard</NavLink>}
+          {!username ? (
+            <Button type='link' to='/login'>
+              <KeyIcon className='w-2 h-2 sm:h-4 sm:w-4' />
+              Login
+            </Button>
+          ) : (
+            <DropDown value={username} />
+          )}
+        </div>
       </div>
       <div className='continer mx-auto flex flex-col place-items-center space-y-14'>
         <h1 className='text-7xl font-bold text-primary'>LIBRARIFY</h1>

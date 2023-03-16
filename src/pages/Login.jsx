@@ -9,14 +9,14 @@ export default function Login() {
   const context = useAppContext();
   const [isLoading, setIsLoading] = useState(false);
 
-    const toastrOptions = {
-      position: 'top-center',
-      autoClose: 3500,
-      hideProgressBar: true,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-    };
+  const toastrOptions = {
+    position: 'top-center',
+    autoClose: 3500,
+    hideProgressBar: true,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+  };
 
   useEffect(() => {
     document.title = 'Login';
@@ -34,7 +34,7 @@ export default function Login() {
     <div className='bg-primaryLogin min-h-screen'>
       <div className='flex justify-start px-8'>
         <Link to='/' className='text-4xl text-primary font-bold m-8'>
-          SMUCKER’S
+          LIBRARIFY
         </Link>
       </div>
 
@@ -49,9 +49,7 @@ export default function Login() {
         </div>
 
         <div className='flex grow max-w-lg flex-col items-center'>
-          <h4 className='text-5xl text-white font-bold mb-3'>LOGIN</h4>
-          <h4 className='text-4xl text-white font-bold mb-9'>To Smucker's</h4>
-
+          <h4 className='text-5xl text-white font-bold mb-14'>LOGIN</h4>
           <form
             className='flex flex-col gap-7 mt-3 w-full'
             onSubmit={loginHandler}

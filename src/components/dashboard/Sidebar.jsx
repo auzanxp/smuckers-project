@@ -16,7 +16,7 @@ export default function Sidebar() {
     <>
       <div className='mb-4 pb-2 border-b border-b-gray-300 py-6 px-5'>
         <Link to='/'>
-          <Brand />
+          <Brand isSmall />
         </Link>
       </div>
       <div className='border-b'>
