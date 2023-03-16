@@ -61,7 +61,7 @@ export default function TableList({ data, ...props }) {
       {showModal.isOpen && (
         <Modal isOpen={setShowModal} deleteHandler={handleDeleteData} />
       )}
-      <table className='table rounded-lg shadow bg-slate-600 '>
+      <table className='table rounded-lg shadow bg-gray-800 '>
         <thead>
           <tr className='text-xs'>
             <th className='p-4 font-medium uppercase border-b-2 dark:border-dark-5 whitespace-nowrap text-white'>
@@ -120,7 +120,6 @@ export default function TableList({ data, ...props }) {
                     <div>
                       <Button
                         className='px-5'
-                        color='green'
                         value={item.id}
                         onClick={() => {
                           navigate(`/dashboard/books/edit/${item.id}`);
@@ -158,11 +157,11 @@ export default function TableList({ data, ...props }) {
                 </td>
                 <td className='p-4 border-b-2 dark:border-dark-5'>
                   {item.is_borrowed ? (
-                    <div className='bg-red-600 text-center p-1 rounded-sm tracking-wider font-medium'>
+                    <div className='bg-red-700 text-center p-1 rounded-sm tracking-wider font-medium'>
                       DIPINJAM
                     </div>
                   ) : (
-                    <div className='bg-green-700 text-center p-1 rounded-sm tracking-wider font-medium'>
+                    <div className='bg-indigo-700 text-center p-1 rounded-sm tracking-wider font-medium'>
                       TERSEDIA
                     </div>
                   )}

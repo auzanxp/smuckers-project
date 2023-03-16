@@ -11,7 +11,7 @@ export default function Layout(props) {
       <div
         className={`${
           !showSidebar && '-translate-x-72'
-        } w-60 bg-gray-800 h-fit fixed shadow-lg my-3 ml-3 rounded-xl transition duration-300`}
+        } w-60 bg-gray-900 h-fit fixed shadow-lg my-3 ml-3 rounded-xl transition duration-300`}
       >
         <Sidebar />
       </div>  
@@ -25,7 +25,7 @@ export default function Layout(props) {
       <div
         className={`${!showSidebar ? 'pl-3' : 'pl-72'} transition duration-300`}
       >
-        <div className='bg-gray-800 py-3 px-5 mr-5 rounded-lg mt-3 min-h-full overflow-x-hidden '>
+        <div className='bg-gray-900 py-3 px-5 mr-5 rounded-lg mt-3 min-h-full overflow-x-hidden '>
           {props.children}
         </div>
       </div>
