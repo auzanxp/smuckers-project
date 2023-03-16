@@ -14,12 +14,12 @@ export default function Sidebar() {
 
   return (
     <>
-      <div className='mb-4 pb-2 border-b border-b-gray-300 py-6 px-5'>
+      <div className='flex justify-center items-center mb-4 pb-2 border-b border-b-gray-300 py-6 px-5'>
         <Link to='/'>
           <Brand isSmall />
         </Link>
       </div>
-      <div className='border-b'>
+      <div >
         <SideNavLink
           href='/dashboard'
           name='dashboard'
