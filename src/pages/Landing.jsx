@@ -89,7 +89,10 @@ export default function Landing() {
             <p className='leading-normal text-base md:text-xl mb-8 text-center md:text-left'>
               Suasana baru literasi dan aktivitas bagi Kawan Perpus!
             </p>
-            <form className='bg-gray-900 opacity-75 w-full shadow-lg rounded-lg px-8 pt-6 pb-8 mb-4' onSubmit={searchHandler}>
+            <form
+              className='bg-gray-900 opacity-75 w-full shadow-lg rounded-lg px-8 pt-6 pb-8 mb-4'
+              onSubmit={searchHandler}
+            >
               <div className='mb-4'>
                 <label
                   className='block text-blue-300 py-2 font-bold mb-2'

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import ButtonGroup from './ButtonGroup';
 import CardBook from './CardBook';
 import CardLoading from './CardLoading';
@@ -6,9 +7,13 @@ import CardLoading from './CardLoading';
 function Pagination(props) {
   const [currentPage, setCurrentPage] = useState(1);
   const [activeButton, setActiveButton] = useState('Terkait');
+  const navigate = useNavigate();
   const pageSize = props.pageSize;
   const data = props.data;
-  const pageCount = props.filteredBooks.length > 0 ? Math.ceil(props.filteredBooks.length / pageSize) : Math.ceil(data.length / pageSize);
+  const pageCount =
+    props.filteredBooks?.length > 0
+      ? Math.ceil(props.filteredBooks?.length / pageSize)
+      : Math.ceil(data.length / pageSize);
 
   const handleButtonClick = (option) => {
     setActiveButton(option);
@@ -38,17 +43,29 @@ function Pagination(props) {
   const renderData = () => {
     const start = (currentPage - 1) * pageSize;
     const end = start + pageSize;
-    if (props.filteredBooks.length > 0) {
+
+    if (props.filteredBooks === null) {
+      return (
+        <>
+          <h1 className='font-bold tracking-wide'>
+            Buku yang Anda cari tidak ditemukan!
+          </h1>
+        </>
+      );
+    }
+
+    if (props.filteredBooks?.length > 0) {
       return props.filteredBooks.map((book) => (
         <CardBook key={book.id} data={book} />
       ));
     }
 
-    if (data.length > 0) {
+    if (data?.length > 0) {
       return data
         .slice(start, end)
         .map((item) => <CardBook key={item.id} data={item} />);
     }
+
     return (
       <>
         <CardLoading />
