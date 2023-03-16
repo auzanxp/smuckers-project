@@ -35,7 +35,7 @@ export default function Login() {
   }
 
   return (
-    <div className='bg-primaryLogin min-h-screen'>
+    <div className='bg-gradient-to-l from-gray-900 to-slate-800 min-h-screen'>
       <div className='flex justify-start px-8 mb-14 pt-6'>
         <Brand />
       </div>
@@ -56,15 +56,15 @@ export default function Login() {
             onSubmit={loginHandler}
           >
             <Input
-              className='rounded-full py-2 px-4 border-white bg-formColor'
+              className='rounded-full py-2 px-4 bg-formColor transform transition hover:scale-105 duration-300 ease-in-out '
               type='text'
-              placeholder='Email or Phone Number'
+              placeholder='username'
             />
             <div className='mb-4 relative'>
               <Input
-                className='rounded-full py-2 px-4 border-white bg-formColor'
+                className='rounded-full py-2 px-4 bg-formColor transform transition hover:scale-105 duration-300 ease-in-out '
                 type={showPassword ? 'text' : 'password'}
-                placeholder='Password'
+                placeholder='password'
               />
               <div className='absolute top-3 right-4 text-white hover:text-slate-300 cursor-pointer'>
                 {showPassword ? (
@@ -112,20 +112,20 @@ export default function Login() {
             <button
               className={`${
                 isLoading && 'disabled opacity-50 cursor-not-allowed'
-              } rounded-full py-2 border border-black font-bold text-white bg-formColor hover:bg-slate-600`}
+              } rounded-full py-2 font-bold text-white bg-formColor hover:bg-slate-600 transform transition hover:scale-95 duration-300 ease-in-out`}
               disabled={isLoading}
             >
               LOGIN
             </button>
           </form>
-          <a href='#' className='text-white font-thin m-4'>
+          <span className='text-white font-thin m-4'>
             Forgot your Password ?
-          </a>
+          </span>
           <div className='flex mt-9 gap-2'>
             <p className='text-white font-thin'>Dont Have Account?</p>
-            <a href='#' className='text-white font-bold'>
+            <span href='#' className='text-white font-bold'>
               SIGN UP
-            </a>
+            </span>
           </div>
         </div>
       </div>
