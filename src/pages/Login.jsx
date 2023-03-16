@@ -123,7 +123,7 @@ export default function Login() {
           </span>
           <div className='flex mt-9 gap-2'>
             <p className='text-white font-thin'>Dont Have Account?</p>
-            <span href='#' className='text-white font-bold'>
+            <span className='text-white font-bold'>
               SIGN UP
             </span>
           </div>

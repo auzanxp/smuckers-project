@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import Brand from '../components/Brand';
 import DropDown from '../components/Dropdown';
 import Button from '../components/elements/Button';
+import TypingText from '../components/TypingText';
 import useAppContext from '../context/AppContext';
 
 export default function Landing() {
@@ -76,7 +77,7 @@ export default function Landing() {
           </div>
         </div>
         {/*Main*/}
-        <div className='container md:pt-[78px] mx-auto flex flex-wrap flex-col md:flex-row items-center'>
+        <div className='container md:pt-[74px] mx-auto flex flex-wrap flex-col md:flex-row items-center'>
           {/*Left Col*/}
           <div className='flex flex-col w-full xl:w-2/5 justify-center lg:items-start overflow-y-hidden'>
             <h1 className='my-4 text-3xl md:text-5xl text-white font-bold leading-tight text-center md:text-left'>
@@ -94,9 +95,7 @@ export default function Landing() {
               onSubmit={searchHandler}
             >
               <div className='mb-4'>
-                <label
-                  className='block text-blue-300 py-2 font-bold mb-2'
-                >
+                <label className='block text-blue-300 py-2 font-bold mb-2'>
                   Ketik Buku yang anda cari!
                 </label>
                 <input
@@ -117,17 +116,21 @@ export default function Landing() {
           </div>
           {/*Right Col*/}
           <div className='w-full xl:w-3/5 p-12 overflow-hidden'>
-            <img
-              className='mx-auto w-full md:w-4/5 transform -rotate-6 transition hover:scale-105 duration-700 ease-in-out hover:rotate-6'
-              src='/macbook.svg'
-            />
+            <div className='relative transform -rotate-6 transition hover:scale-105 duration-700 ease-in-out hover:rotate-6'>
+              <img
+                className='mx-auto w-full md:w-4/5'
+                src='/macbook.svg'
+              />
+              <div
+                className='absolute top-1/3 mx-10 left-1/2 transform -translate-x-1/4 w-full h-full'
+              >
+                <TypingText />
+              </div>
+            </div>
           </div>
           {/*Footer*/}
           <div className='w-full pt-16 pb-6 text-sm text-center md:text-left fade-in'>
-            <span
-              className='text-gray-500 no-underline hover:no-underline'
-              href='#'
-            >
+            <span className='text-gray-500 no-underline hover:no-underline'>
               Copyright © 2023
             </span>
             &nbsp; - Smucker’s Team
