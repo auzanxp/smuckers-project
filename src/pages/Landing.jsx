@@ -1,4 +1,5 @@
 import { BookOpenIcon, HomeIcon, KeyIcon } from '@heroicons/react/24/outline';
+import { useEffect } from 'react';
 import Brand from '../components/Brand';
 import DropDown from '../components/Dropdown';
 import Button from '../components/elements/Button';
@@ -8,6 +9,11 @@ export default function Landing() {
   const {
     username: { username },
   } = useAppContext();
+
+  useEffect(() => {
+    document.title = 'Librarify';
+  }, []);
+  
   return (
     <div
       className='leading-normal min-h-screen tracking-normal text-indigo-400 bg-cover pt-6 bg-fixed'

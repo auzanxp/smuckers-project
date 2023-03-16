@@ -1,6 +1,5 @@
 import { KeyIcon } from '@heroicons/react/24/outline';
 import { useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import DropDown from '../components/Dropdown';
 import Button from '../components/elements/Button';
 import Input from '../components/elements/Input';
@@ -16,7 +15,7 @@ export default function Home() {
 
   useEffect(() => {
     document.title = 'Home';
-  });
+  }, []);
   return (
     <div className='bg-primaryLogin min-h-screen'>
       <div className='flex place-items-end justify-end p-8'>
