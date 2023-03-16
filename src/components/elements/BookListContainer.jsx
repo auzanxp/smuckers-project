@@ -65,10 +65,10 @@ function Pagination(props) {
 
   return (
     <div>
-      <div className='border border-white my-3'>
+      <div className='border border-white my-3 bg-gray-900 rounded-lg'>
         <div className='md:flex justify-between items-center px-8 py-4'>
           <div className='md:flex items-center gap-2'>
-            <p className='font-medium text-lg mb-2 md:mb-0'>Urutkan</p>
+            <p className='font-medium text-lg mb-2 md:mb-0'>Urutkan : </p>
             <ButtonGroup
               options={['Terkait', 'Terbaru']}
               activeOption={activeButton}

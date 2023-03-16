@@ -44,7 +44,7 @@ export default function Login() {
           <img
             className='mx-auto'
             style={{ width: '350px' }}
-            src='/public/bookImage.png'
+            src='/bookImage.png'
             alt=''
           />
         </div>

@@ -29,7 +29,7 @@ const CardBook = ({ data }) => {
   return (
     <Link
       to={`/books/${data?.id}`}
-      className='border min-h-full w-44 md:w-56 bg-[#414654] rounded-tr-3xl rounded-bl-3xl overflow-hidden flex flex-col justify-between hover:shadow-[0_0px_15px_5px_rgba(250,242,242,0.25)] transition duration-300'
+      className='min-h-full w-44 md:w-56 bg-gray-900 rounded-tr-3xl rounded-bl-3xl overflow-hidden flex flex-col justify-between hover:shadow-[0_0px_15px_5px_rgba(250,242,242,0.25)] transition transform hover:scale-105 duration-300 ease-in-out'
     >
       <div className='px-4 py-2'>
         <img
@@ -55,11 +55,11 @@ const CardBook = ({ data }) => {
       </div>
       <div>
         {data.is_borrowed ? (
-          <div className='bg-red-600 text-center py-1 border-t tracking-wider font-medium'>
+          <div className='bg-red-700 text-center py-1 border-t tracking-wider font-medium'>
             DIPINJAM
           </div>
         ) : (
-          <div className='bg-[#63C37C] text-center py-1 border-t tracking-wider font-medium'>
+          <div className='bg-indigo-700 text-center text-white py-1 border-t tracking-wider font-medium'>
             TERSEDIA
           </div>
         )}

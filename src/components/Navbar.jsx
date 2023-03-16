@@ -55,7 +55,7 @@ export default function Navbar({ books = [] }) {
   }
 
   return (
-    <header className='h-20 px-8 border-b-white border-b border-[#CBC2C2] gap-5 flex justify-between items-center'>
+    <header className='h-20 px-8  gap-5 flex justify-between items-center'>
       <Link to='/' className='text-[#4783FE] hidden md:block'>
         <Brand />
       </Link>
@@ -68,7 +68,7 @@ export default function Navbar({ books = [] }) {
           <input
             type='text'
             id='search'
-            className='bg-transparent border transition duration-200 border-gray-300 text-gray-100 text-sm rounded-3xl focus:outline-none focus:shadow-[0_0_10px_3px_#FAF2F240] block w-full px-5 p-2.5'
+            className='bg-transparent border transition duration-200 border-gray-300 text-gray-100 text-sm rounded-3xl focus:outline-none focus:shadow-[0_0_10px_3px_#FAF2F240] block w-full px-5 p-2.5 transform hover:scale-105  ease-in-out'
             placeholder='Cari buku'
             name='keyword'
             required
@@ -79,7 +79,7 @@ export default function Navbar({ books = [] }) {
           >
             <svg
               aria-hidden='true'
-              className='w-5 h-5 text-gray-400'
+              className='w-5 h-5 text-gray-400 transform transition hover:scale-125 duration-300 ease-in-out'
               fill='currentColor'
               viewBox='0 0 20 20'
               xmlns='http://www.w3.org/2000/svg'
