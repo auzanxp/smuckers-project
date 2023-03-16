@@ -13,7 +13,7 @@ const toastrOptions = {
   closeOnClick: true,
   pauseOnHover: true,
   draggable: true,
-  darkMode: true,
+  theme: 'dark',
 };
 
 export default function TableList({ data, ...props }) {

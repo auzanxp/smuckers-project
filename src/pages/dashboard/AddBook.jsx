@@ -6,6 +6,16 @@ import Button from '../../components/elements/Button';
 import Input from '../../components/elements/Input';
 import TextArea from '../../components/elements/TextArea';
 
+const toastrOptions = {
+  position: 'top-center',
+  autoClose: 3500,
+  hideProgressBar: true,
+  closeOnClick: true,
+  pauseOnHover: true,
+  draggable: true,
+  theme: 'dark',
+};
+
 const initState = {
   title: '',
   author: '',
@@ -37,13 +47,12 @@ export default function AddBook({ title = 'Add Book' }) {
     }
   };
 
-  const handleSubmitBooks = (e) => {
+  const handleSubmitBooks = async (e) => {
     e.preventDefault();
     const { is_borrowed, ...data } = input;
-    console.log(input);
     try {
       if (Id) {
-        axios.put(
+        const result = await axios.put(
           `https://books-api.anggakurnia.me/books/${Id}/edit`,
           { ...input },
           {
@@ -52,9 +61,10 @@ export default function AddBook({ title = 'Add Book' }) {
             },
           }
         );
+        toast.success("Buku berhasil diubah.", toastrOptions);
         setInput(initState);
       } else {
-        axios.post(
+        const result = await axios.post(
           'https://books-api.anggakurnia.me/books/create',
           { ...data },
           {
@@ -63,20 +73,11 @@ export default function AddBook({ title = 'Add Book' }) {
             },
           }
         );
+        toast.success("Buku berhasil ditambahkan.", toastrOptions);
+        setInput(initState);
       }
-      setInput(initState);
-      toast.success('OK Data Berhasil disubmit!', {
-        position: 'top-center',
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: 'dark',
-      });
     } catch (error) {
-      console.log(error);
+      toast.error(error.response.data.message, toastrOptions);
     }
   };
 

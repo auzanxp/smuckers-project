@@ -5,6 +5,7 @@ import 'react-toastify/dist/ReactToastify.min.css';
 import Navbar from '../components/Navbar';
 import Category from '../components/elements/Category';
 import BookListContainer from '../components/elements/BookListContainer';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const toastrOptions = {
   position: 'top-center',
@@ -20,15 +21,36 @@ export default function BookList() {
   const [books, setBooks] = useState([]);
   const [isReset, setIsReset] = useState(false);
   const [filteredBooks, setFilteredBooks] = useState([]);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const searchParams = new URLSearchParams(location.search);
+  const keyword = searchParams.get('search');
 
   useEffect(() => {
     document.title = 'All Books';
+
     (async () => {
       const {
         data: {
           data: { books },
         },
       } = await axios.get('https://books-api.anggakurnia.me/books');
+
+      if (keyword) {
+        const filteredBooks = books.filter((book) =>
+          book.title.toLowerCase().includes(keyword.toLowerCase())
+        );
+
+        console.log(filteredBooks);
+
+        if (filteredBooks.length === 0) {
+          setFilteredBooks(null);
+        } else {
+          setFilteredBooks(filteredBooks);
+        }
+
+      }
+
       setBooks(books);
     })();
   }, [isReset]);
@@ -36,19 +58,22 @@ export default function BookList() {
   function filterBooksHandler(e) {
     e.preventDefault();
     setFilteredBooks([]);
+
     const bookYearStart = e.target[5].value;
     const bookYearEnd = e.target[6].value;
     const checkedBoxes = Array.from(e.target).filter((input) => input.checked);
     const checkedValues = checkedBoxes.map((input) => input.value);
+
     const filteredBooks = books.filter(
       (book) =>
         checkedValues.includes(book.category) ||
         (book.year >= bookYearStart && book.year <= bookYearEnd)
     );
+
     if (filteredBooks.length === 0) {
-      toast.error('Buku tidak ditemukan', toastrOptions);
-      return;
+      toast.error('Buku yang Anda cari tidak ditemukan', toastrOptions);
     }
+
     setFilteredBooks(filteredBooks);
   }
 
@@ -117,6 +142,7 @@ export default function BookList() {
                       onClick={() => {
                         setFilteredBooks([]);
                         setIsReset(!isReset);
+                        navigate('/books', { replace: true });
                       }}
                     >
                       Reset
@@ -129,10 +155,10 @@ export default function BookList() {
         </div>
         <div className='w-full'>
           <BookListContainer
+            filteredBooks={filteredBooks}
             data={books}
             setBooks={setBooks}
             pageSize='8'
-            filteredBooks={filteredBooks}
           />
         </div>
       </div>

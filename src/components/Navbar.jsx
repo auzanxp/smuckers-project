@@ -5,7 +5,6 @@ import useAppContext from '../context/AppContext';
 import Brand from './Brand';
 import DropDown from './Dropdown';
 import Button from './elements/Button';
-import NavLink from './elements/NavLink';
 
 export default function Navbar({ books = [] }) {
   const [fillteredBook, setFillteredBook] = useState([]);
@@ -55,7 +54,7 @@ export default function Navbar({ books = [] }) {
   }
 
   return (
-    <header className='h-20 px-8  gap-5 flex justify-between items-center'>
+    <header className='h-20 px-8 gap-5 flex justify-between items-center'>
       <Link to='/' className='text-[#4783FE] hidden md:block'>
         <Brand />
       </Link>
