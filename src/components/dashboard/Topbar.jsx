@@ -14,7 +14,8 @@ function Topbar({ handleClick }) {
   } = useAppContext();
 
   let pageName = location.pathname.split('/');
-  pageName = pageName[1];
+  pageName = pageName[2];
+  console.log(pageName)
 
   return (
     <div className='flex items-center justify-between px-5 py-3 mr-5  rounded-lg text-gray-100 bg-gray-900 border-y-zinc-500'>
@@ -24,7 +25,7 @@ function Topbar({ handleClick }) {
           onClick={() => handleClick()}
         />
         <h2 className='hidden text-lg font-medium capitalize sm:block'>
-          {pageName} Page
+          {pageName === undefined ? 'Dashboard' : pageName} Page
         </h2>
       </div>
       <div className='flex items-center justify-center space-x-2'>

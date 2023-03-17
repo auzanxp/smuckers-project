@@ -151,7 +151,11 @@ export default function Navbar({ books = [] }) {
             </Button>
           )}
           {!username ? (
-            <Button type='link' to='/login'>
+            <Button
+              type='link'
+              to='/login'
+              className='transform hover:scale-125 duration-300 ease-in-out'
+            >
               <KeyIcon className='w-2 h-2 sm:h-4 sm:w-4' />
               Login
             </Button>
