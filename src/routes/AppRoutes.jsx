@@ -31,7 +31,7 @@ export default function AppRoutes() {
         }
       />
       <Route
-        path='/dashboard/books'
+        path='/dashboard/books-list'
         element={
           <Auth
             el={
@@ -43,7 +43,7 @@ export default function AppRoutes() {
         }
       />
       <Route
-        path='/dashboard/books/add'
+        path='/dashboard/books-form/add'
         element={
           <Auth
             el={
@@ -55,7 +55,7 @@ export default function AppRoutes() {
         }
       />
       <Route
-        path='/dashboard/books/edit/:id'
+        path='/dashboard/books-form/edit/:id'
         element={
           <Auth
             el={
