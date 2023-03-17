@@ -40,7 +40,7 @@ export default function Login() {
         <Brand />
       </div>
       <div className='flex flex-row justify-evenly'>
-        <div className=''>
+        <div className='hidden md:block'>
           <img
             className='mx-auto'
             style={{ width: '350px' }}
