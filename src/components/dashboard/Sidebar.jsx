@@ -15,9 +15,9 @@ export default function Sidebar() {
   return (
     <>
       <div className='flex justify-center items-center mb-4 pb-2 border-b border-b-gray-300 py-6 px-5'>
-        <Link to='/'>
+        <div>
           <Brand isSmall />
-        </Link>
+        </div>
       </div>
       <div >
         <SideNavLink
