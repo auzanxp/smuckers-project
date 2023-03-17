@@ -21,7 +21,7 @@ export default function Brand({isSmall}) {
   };
   return (
     <Link
-      className='flex items-center no-underline hover:no-underline lg:text-2xl'
+      className='flex items-center no-underline hover:no-underline md:text-3xl'
       to='/'
       onMouseEnter={() => animateBrand(true)}
       onMouseLeave={() => animateBrand(false)}
