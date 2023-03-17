@@ -5,6 +5,7 @@ import 'react-toastify/dist/ReactToastify.min.css';
 import { useNavigate } from 'react-router-dom';
 import Button from './elements/Button';
 import Modal from './elements/Modal';
+import TableLoading from './elements/TableLoading';
 
 const toastrOptions = {
   position: 'top-center',
@@ -104,13 +105,7 @@ export default function TableList({ data, ...props }) {
         </thead>
         <tbody>
           {data == null ? (
-            <tr>
-              <td colSpan={12} className='text-center text-gray-100'>
-                <h1 className='my-5 text-2xl font-bold'>
-                  Loading...
-                </h1>
-              </td>
-            </tr>
+          <TableLoading/>
           ) : (
             data.map((item, i) => (
               <tr className='text-xs text-white' key={item.id}>
