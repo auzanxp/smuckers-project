@@ -37,7 +37,7 @@ export default function BookDetail() {
     <div className='bg-gradient-to-l from-gray-900 to-slate-800 pb-10 min-h-screen'>
       <Navbar books={books} />
       {detailBook?.id ? (
-        <div className='py-4 mt-5 bg-gray-900 rounded-lg p-10 mx-auto w-3/4 md:flex-row flex flex-col md:items-center md:justify-center gap-10'>
+        <div className='py-4 mt-5 bg-gray-900 rounded-lg p-10 mx-auto md:w-3/4 md:flex-row flex flex-col md:items-center md:justify-center gap-10'>
           <div className=''>
             <picture className='rounded-lg w-56 block overflow-hidden cursor-pointer'>
               <img

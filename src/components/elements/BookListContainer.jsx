@@ -46,11 +46,11 @@ function Pagination(props) {
 
     if (props.filteredBooks === null) {
       return (
-        <>
+        <z>
           <h1 className='font-bold tracking-wide'>
             Buku yang Anda cari tidak ditemukan!
           </h1>
-        </>
+        </z>
       );
     }
 
