@@ -20,7 +20,7 @@ export default function DropDown({ value }) {
             <div>
                 <button
                     type="button"
-                    className="flex items-center justify-center w-full px-4 py-2 text-sm font-medium rounded-lg bg-slate-800 hover:bg-slate-600 text-white focus:outline-none "
+                    className="flex items-center justify-center w-full px-4 py-[6px] text-sm font-medium rounded-lg bg-slate-800 hover:bg-slate-600 text-white focus:outline-none "
                     id="options-menu"
                     onClick={() => handleShow()}
                 >

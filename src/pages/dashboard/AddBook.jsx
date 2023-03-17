@@ -64,7 +64,7 @@ export default function AddBook({ title = 'Add Book' }) {
         );
         toast.success("Buku berhasil diubah.", toastrOptions);
         setInput(initState);
-        navigate('/dashboard/books');
+        navigate('/dashboard/books-list');
       } else {
         const result = await axios.post(
           'https://books-api.anggakurnia.me/books/create',
@@ -77,7 +77,7 @@ export default function AddBook({ title = 'Add Book' }) {
         );
         toast.success("Buku berhasil ditambahkan.", toastrOptions);
         setInput(initState);
-        navigate('/dashboard/books');
+        navigate('/dashboard/books-list');
       }
     } catch (error) {
       toast.error(error.response.data.message, toastrOptions);

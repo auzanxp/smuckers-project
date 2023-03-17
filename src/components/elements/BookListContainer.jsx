@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import {  useNavigate } from 'react-router-dom';
 import ButtonGroup from './ButtonGroup';
 import CardBook from './CardBook';
 import CardLoading from './CardLoading';
@@ -46,11 +46,11 @@ function Pagination(props) {
 
     if (props.filteredBooks === null) {
       return (
-        <z>
+        <div className='flex justify-center items-center w-max'>
           <h1 className='font-bold tracking-wide'>
             Buku yang Anda cari tidak ditemukan!
           </h1>
-        </z>
+        </div>
       );
     }
 
