@@ -27,15 +27,15 @@ export default function Sidebar() {
           icon={<BookOpenIcon />}
         />
         <SideNavLink
-          href='/dashboard/books'
+          href='/dashboard/books-list'
           name='list Data'
-          active={locationPath === '/dashboard/books' && true}
+          active={locationPath === '/dashboard/books-list' && true}
           icon={<TableCellsIcon />}
         />
         <SideNavLink
-          href='/dashboard/books/add'
+          href='/dashboard/books-form/add'
           name='Tambah Buku'
-          active={locationPath === '/dashboard/books/add' && true}
+          active={locationPath === '/dashboard/books-form/add' && true}
           icon={<SquaresPlusIcon className='w-5 h-5' />}
         />
       </div>

@@ -65,7 +65,11 @@ export default function Landing() {
                   </Button>
                 )}
                 {!username ? (
-                  <Button type='link' to='/login'>
+                  <Button
+                    type='link'
+                    to='/login'
+                    className='transform hover:scale-125 duration-300 ease-in-out'
+                  >
                     <KeyIcon className='w-2 h-2 sm:h-4 sm:w-4' />
                     Login
                   </Button>
@@ -117,13 +121,8 @@ export default function Landing() {
           {/*Right Col*/}
           <div className='w-full xl:w-3/5 p-12 overflow-hidden'>
             <div className='relative transform -rotate-6 transition hover:scale-105 duration-700 ease-in-out hover:rotate-6'>
-              <img
-                className='mx-auto w-full md:w-4/5'
-                src='/macbook.svg'
-              />
-              <div
-                className='absolute top-1/3 mx-10 left-1/2 transform -translate-x-1/4 w-full h-full'
-              >
+              <img className='mx-auto w-full md:w-4/5' src='/macbook.svg' />
+              <div className='absolute top-1/3 mx-10 left-1/2 transform -translate-x-1/4 w-full h-full'>
                 <TypingText />
               </div>
             </div>

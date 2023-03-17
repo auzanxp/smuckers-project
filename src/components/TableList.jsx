@@ -122,7 +122,7 @@ export default function TableList({ data, ...props }) {
                         className='px-5'
                         value={item.id}
                         onClick={() => {
-                          navigate(`/dashboard/books/edit/${item.id}`);
+                          navigate(`/dashboard/books-form/edit/${item.id}`);
                         }}
                       >
                         Edit
