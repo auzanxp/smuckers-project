@@ -46,11 +46,11 @@ function Pagination(props) {
 
     if (props.filteredBooks === null) {
       return (
-        <>
+        <div className='flex justify-center items-center w-max'>
           <h1 className='font-bold tracking-wide'>
             Buku yang Anda cari tidak ditemukan!
           </h1>
-        </>
+        </div>
       );
     }
 
