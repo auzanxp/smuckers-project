@@ -55,9 +55,9 @@ export default function Navbar({ books = [] }) {
 
   return (
     <header className='md:h-20 px-8 gap-2 md:gap-5 flex flex-col md:flex-row justify-between items-center'>
-      <Link to='/' className='text-[#4783FE] text-2xl'>
+      <div className='text-[#4783FE] text-2xl'>
         <Brand />
-      </Link>
+      </div>
       <form
         className='relative block md:flex flex-col items-center w-full md:w-1/3 form-search'
         onSubmit={searchBookHandler}
