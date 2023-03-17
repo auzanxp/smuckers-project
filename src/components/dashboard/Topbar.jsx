@@ -15,7 +15,6 @@ function Topbar({ handleClick }) {
 
   let pageName = location.pathname.split('/');
   pageName = pageName[2];
-  console.log(pageName)
 
   return (
     <div className='flex items-center justify-between px-5 py-3 mr-5  rounded-lg text-gray-100 bg-gray-900 border-y-zinc-500'>
