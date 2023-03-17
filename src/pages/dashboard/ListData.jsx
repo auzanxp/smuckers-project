@@ -29,6 +29,7 @@ export default function ListData() {
         });
     };
     getData();
+    setInput('')
   }, [fetchStatus]);
 
   const handleSearch = (e) => {
@@ -238,13 +239,13 @@ export default function ListData() {
                     <div className='flex flex-row space-x-2'>
                       <button
                         type='submit'
-                        className='py-1 px-5 w-24 rounded-lg text-white hover:bg-[#414654]  border-2 border-white focus:outline-none transform transition hover:scale-105 duration-300 ease-in-out'
+                        className='py-1 px-5 w-24 rounded-lg text-white hover:bg-[#414654]  border border-white focus:outline-none transform transition hover:scale-105 duration-300 ease-in-out'
                       >
                         Simpan
                       </button>
                       <button
                         type='reset'
-                        className='py-1 w-24 px-5  text-white rounded-lg border-2 focus:outline-none border-white hover:bg-[#414654] transform transition hover:scale-105 duration-300 ease-in-out '
+                        className='py-1 w-24 px-5  text-white rounded-lg border focus:outline-none border-white hover:bg-[#414654] transform transition hover:scale-105 duration-300 ease-in-out '
                         onClick={() => {
                           setFetchStatus(false);
                         }}

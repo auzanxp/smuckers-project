@@ -4,7 +4,7 @@ export default function TypingText() {
   const [text, setText] = useState('');
 
   useEffect(() => {
-    const words = ['Hai!', 'Selamat Datang di', 'LiBLRARify', 'Enjoy!'];
+    const words = ['Hai!', 'Selamat Datang di', 'LiBRARify', 'Enjoy!'];
     let wordIndex = 0;
     let letterIndex = 0;
 

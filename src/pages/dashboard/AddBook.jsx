@@ -94,6 +94,8 @@ export default function AddBook({ title = 'Add Book' }) {
     };
     if (Id !== undefined) {
       getBookDetail();
+    } else {
+      setInput(initState)
     }
     document.title = title;
   }, [Id]);
