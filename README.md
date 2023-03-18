@@ -1,28 +1,28 @@
 <div align="center">
   <a href="#">
-    <img src="./src/assets/images/logo-lg.png" alt="Logo" width="140" height="80">
+    <img src="/logo.png" alt="Logo" width="140">
   </a>
 
-  <h3 align="center">Smucker's Project</h3>
+  <h3 align="center">LIBRARIfy</h3>
 
   <p align="center">
-    An repository for smucker's project.
+    An repository for Smucker's Project.
     <br />
-    <a href="#">View Demo</a>
+    <a href="https://librarify-app.netlify.app/">View Demo</a>
     ·
-    <a href="">Lo-Fi Design</a>
+    <a href="https://www.figma.com/file/YMn8ypqccVsQM8L52EVhJ6/KE?node-id=62-2&t=NqyudprrypWCrqbc-0">Lo-Fi Design</a>
   </p>
 </div>
 
-# API BACKEND
-## ROUTE BOOKS
+## API BACKEND
+### ROUTE API
 > GET | [`http://18.136.104.200/books`](http://18.136.104.200/books)
-- untuk mengambil data semua buku
+- fetch all data
 > GET | [`http://18.136.104.200/books/{id}`](http://18.136.104.200/books/{id})
-- untuk mengambil detail buku
+- fetch data detail
 > POST | [`http://18.136.104.200/login`](http://18.136.104.200/books/{id})
-- login dulu buat dapetin access_token \
-Payload yang harus dikirimkan: \
+- login first to get access_token \
+Payload : \
 `{
   "username": "",
   "password: ""
@@ -31,16 +31,11 @@ Payload yang harus dikirimkan: \
 
 
 | username | password |
-| --- | --- |
-| angga | angga |
-| auzan | auzan |
-| maman | maman |
-| baharudin | baharudin |
-| irfan | irfan |
-| rafi | rafi |
+| xxxxx | xxxxx |
+
 > POST | [`http://18.136.104.200/books/create`](http://18.136.104.200/books/create)
-- untuk menambah buku baru harus mengirmkan token (login dulu)
-Harus mengirimkan properti berikut: \
+- add a new data, you must send a token (login first)
+Payload: \
 title: \
 author: \
 publisher: \
@@ -54,8 +49,8 @@ width: \
 cover: (URL IMAGE) \
 description: \
 category: \
-rating:
-Contoh penggunaanya:
+rating: \
+- Contoh penggunaanya:
 ```
 function addBookHandler(data){
   const response = await axios.post("http://18.136.104.200/books/create",{
@@ -82,8 +77,8 @@ function addBookHandler(data){
 }
 ```
 > PUT | [`http://18.136.104.200/books/:id/edit`](http://18.136.104.200/books/:id/edit)
-- untuk mengedit buku (WAJIB MENGIRIMKAN ID)
-Bisa mengirimkan salah satu properti dibawah ini: \
+- edit data (MANDATORY SEND ID)
+Can submit one of payload below: \
 title: \
 author: \
 publisher: \
@@ -97,9 +92,8 @@ width: \
 cover: (URL IMAGE) \
 description: \
 category: \
-rating:
-Contoh Penggunaanya:
-\
+rating: \
+- example: 
 ```
 function editBookHandler(data){
   const response = await axios.put(`http://18.136.104.200/books/{$data.id}/edit`,{
@@ -126,8 +120,8 @@ function editBookHandler(data){
 }
 ```
 > DELETE | [`http://18.136.104.200/books/:id`](http://18.136.104.200/books/:id)
-- untuk menghapus buku (WAJIB MENGIRIMKAN ID) \
-Contoh penggunaanya:
+- delete data (MANDATORY SEND ID) \
+example:
 ```
 function deleteBookHandler(data){
   const response = await axios.delete(`http://18.136.104.200/books/{$data.id}`,{
