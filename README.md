@@ -1,6 +1,6 @@
 <div align="center">
   <a href="#">
-    <img src="/logo.png" alt="Logo" width="140">
+    <img src="./public/logo.png" alt="Logo" width="140">
   </a>
 
   <h3 align="center">LIBRARIfy</h3>
@@ -13,6 +13,16 @@
     <a href="https://www.figma.com/file/YMn8ypqccVsQM8L52EVhJ6/KE?node-id=62-2&t=NqyudprrypWCrqbc-0">Lo-Fi Design</a>
   </p>
 </div>
+
+
+## INSTALL
+
+```bash
+1. clone this repo
+2. cd to repo
+3. npm install
+4. npm run dev to development project
+```
 
 ## API BACKEND
 ### ROUTE API
@@ -133,16 +143,6 @@ function deleteBookHandler(data){
 }
 ```
 
-
-
-## Install
-
-```bash
-1. clone this repo
-2. cd to repo
-3. npm install
-4. npm run dev to development project
-```
 
 ## Git usage guidelines
 ### Git Message
