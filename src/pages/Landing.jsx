@@ -31,10 +31,10 @@ export default function Landing() {
       <div className='h-full px-8'>
         {/*Nav*/}
         <div className='w-full container mx-auto'>
-          <div className='w-full flex items-center justify-between'>
+          <div className='w-full flex items-center justify-between flex-col md:flex-row text-2xl'>
             <Brand />
-            <div className='flex w-1/2 justify-end content-center'>
-              <div className='flex items-center justify-end gap-5'>
+            <div className='flex w-full justify-center md:justify-end content-center'>
+              <div className='flex items-center justify-end gap-2 md:gap-5'>
                 {username ? (
                   <>
                     <Button
@@ -119,7 +119,7 @@ export default function Landing() {
             </form>
           </div>
           {/*Right Col*/}
-          <div className='w-full xl:w-3/5 p-12 overflow-hidden'>
+          <div className='w-full xl:w-3/5 p-12 hidden md:block overflow-hidden'>
             <div className='relative transform -rotate-6 transition hover:scale-105 duration-700 ease-in-out hover:rotate-6'>
               <img className='mx-auto w-full md:w-4/5' src='/macbook.svg' />
               <div className='absolute top-1/3 mx-10 left-1/2 transform -translate-x-1/4 w-full h-full'>
