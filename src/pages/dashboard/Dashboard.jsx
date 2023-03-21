@@ -74,7 +74,7 @@ export default function Dashboard() {
           <time>{formattedTime}</time>
         </div>
       </div>
-      <div className='text-2xl text-center font-semibold tracking-wider h-96 flex-row flex justify-center items-center gap-6 text-white'>
+      <div className='text-2xl text-center font-semibold tracking-wider h-[-73rem] md:h-96 flex-col md:flex-row flex justify-center items-center gap-6 text-white'>
         <div className='space-y-6'>
           <div className='max-w-sm p-6 bg-slate-800 flex justify-around items-center space-x-5 rounded-lg shadow w-56 h-40'>
             <div>
