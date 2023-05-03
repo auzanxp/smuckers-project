@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from '../../api/Api'
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
@@ -54,7 +54,7 @@ export default function AddBook({ title = 'Add Book' }) {
     try {
       if (Id) {
         const result = await axios.put(
-          `https://books-api.anggakurnia.me/books/${Id}/edit`,
+          `/books/${Id}/edit`,
           { ...input },
           {
             headers: {
@@ -67,7 +67,7 @@ export default function AddBook({ title = 'Add Book' }) {
         navigate('/dashboard/books-list');
       } else {
         const result = await axios.post(
-          'https://books-api.anggakurnia.me/books/create',
+          '/books/create',
           { ...data },
           {
             headers: {
@@ -87,7 +87,7 @@ export default function AddBook({ title = 'Add Book' }) {
   useEffect(() => {
     const getBookDetail = async () => {
       const { data } = await axios.get(
-        `https://books-api.anggakurnia.me/books/${Id}`
+        `/books/${Id}`
       );
       const response = await data.data.book;
       setInput(response);

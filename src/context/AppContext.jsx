@@ -1,15 +1,13 @@
 import React, { createContext, useContext, useState } from 'react';
 import jwt_decode from 'jwt-decode';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import axios from '../api/Api'
 
 const AppContext = createContext();
 
 export default function useAppContext() {
   return useContext(AppContext);
 }
-
-const URL = 'https://books-api.anggakurnia.me';
 
 export function ContextProvider({ children }) {
   const initName = () => {
@@ -33,7 +31,7 @@ export function ContextProvider({ children }) {
   const loginHandler = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.post(`${URL}/login`, {
+      const { data } = await axios.post(`/login`, {
         username: e.target[0].value,
         password: e.target[1].value,
       });

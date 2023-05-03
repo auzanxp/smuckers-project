@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from '../../api/Api'
 import { useEffect, useState } from 'react';
 import { ToastContainer } from 'react-toastify';
 import Button from '../../components/elements/Button';
@@ -19,7 +19,7 @@ export default function ListData() {
     document.title = 'List Data';
     const getData = () => {
       axios
-        .get('https://books-api.anggakurnia.me/books')
+        .get('/books')
         .then((res) => {
           setBooks(res.data.data.books);
           setFetchStatus(true);
@@ -37,7 +37,7 @@ export default function ListData() {
     setBooks(null);
     const getSearch = async () => {
       const { data } = await axios.get(
-        'https://books-api.anggakurnia.me/books'
+        '/books'
       );
       const response = data.data.books;
       const searchData = response.filter((ress) => {
@@ -68,7 +68,7 @@ export default function ListData() {
     setBooks(null);
     const getFilterData = async () => {
       const { data } = await axios.get(
-        'https://books-api.anggakurnia.me/books'
+        '/books'
       );
       const response = data.data.books;
       const filterData = response.filter((res) => {

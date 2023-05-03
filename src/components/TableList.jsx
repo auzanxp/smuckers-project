@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
 import { useNavigate } from 'react-router-dom';
 import Button from './elements/Button';
 import Modal from './elements/Modal';
 import TableLoading from './elements/TableLoading';
+import axios from '../api/Api'
 
 const toastrOptions = {
   position: 'top-center',
@@ -27,7 +27,7 @@ export default function TableList({ data, ...props }) {
   const handleDeleteData = async () => {
     try {
       await axios.delete(
-        `https://books-api.anggakurnia.me/books/${showModal.id}`,
+        `/books/${showModal.id}`,
         {
           headers: {
             token: JSON.parse(localStorage.getItem('authentications')),

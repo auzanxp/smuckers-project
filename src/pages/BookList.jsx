@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
-import axios from 'axios';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
 import Navbar from '../components/Navbar';
 import Category from '../components/elements/Category';
 import BookListContainer from '../components/elements/BookListContainer';
 import { useLocation, useNavigate } from 'react-router-dom';
+import axios from '../api/Api'
 
 const toastrOptions = {
   position: 'top-center',
@@ -34,7 +34,7 @@ export default function BookList() {
         data: {
           data: { books },
         },
-      } = await axios.get('https://books-api.anggakurnia.me/books');
+      } = await axios.get('/books');
 
       if (keyword) {
         const filteredBooks = books.filter((book) =>
