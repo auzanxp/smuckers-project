@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import axios from 'axios';
+import axios from '../../api/Api'
 import useAppContext from '../../context/AppContext';
 
 export default function Dashboard() {
@@ -32,7 +32,7 @@ export default function Dashboard() {
         data: {
           data: { books },
         },
-      } = await axios.get('https://books-api.anggakurnia.me/books');
+      } = await axios.get('/books');
       // ambil jumlah buku
       setBookCount(books.length);
       // ambil jumlah author

@@ -3,7 +3,7 @@ import {
   FaceFrownIcon,
   FaceSmileIcon,
 } from '@heroicons/react/24/outline';
-import axios from 'axios';
+import axios from '../api/Api'
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import Button from '../components/elements/Button';
@@ -25,7 +25,7 @@ export default function BookDetail() {
         data: {
           data: { books },
         },
-      } = await axios.get('https://books-api.anggakurnia.me/books');
+      } = await axios.get('/books');
       setBooks(books);
       const filterBookById = books.filter((book) => book.id === +bookId);
       document.title = `Book Detail - ${filterBookById[0].title}`;
